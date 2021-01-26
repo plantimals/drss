@@ -1,5 +1,5 @@
 
-all: build run
+all: clean build run
 
 .PHONY: clean build
 
@@ -10,7 +10,7 @@ dependencies:
 	go mod download
 
 run:
-	./drss episode.json
+	./drss --storage `pwd`/feed
 
 clean:
-	rm drss
+	rm drss; rm -rf feed

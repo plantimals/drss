@@ -1,38 +1,104 @@
 package main
 
 import (
-	"encoding/json"
+	"bufio"
+	"context"
+	"flag"
 	"fmt"
-	"io/ioutil"
+	"net/url"
 	"os"
+	"time"
+
+	"github.com/mmcdole/gofeed"
 )
 
-type Enclosure struct {
-	Url    string `json:"@url"`
-	Length string `json:"@length"`
-	Etype  string `json:"@type"`
+type Config struct {
+	StoragePath string
+	FeedURL     string
 }
 
-type PodcastEpisode struct {
-	Title       string `json:"title"`
-	En          Enclosure
-	Description string `json:"description"`
-	Link        string `json:"link"`
+func parseFlags() *Config {
+	var storagePath string
+	var feedURL string
+	flag.StringVar(&storagePath, "storage", "./feed", "path to construct feed")
+	flag.StringVar(&feedURL, "feedURL", "https://feeds.transistor.fm/the-vance-crowe-podcast", "feed URL")
+	flag.Parse()
+
+	/*s, err := os.Stat(storagePath)
+	if err != nil {
+		panic(err)
+	}
+	if s.IsDir() {
+		panic(err)
+	}*/
+
+	_, err := url.ParseRequestURI(feedURL)
+	if err != nil {
+		panic(err)
+	}
+	return &Config{StoragePath: storagePath, FeedURL: feedURL}
 }
 
 func main() {
-	input, err := ioutil.ReadFile(os.Args[1])
+	config := parseFlags()
+	rssToISS(config)
+}
+
+func rssToISS(config *Config) error {
+	feed, err := getFeed(config.FeedURL)
 	if err != nil {
 		panic(err)
 	}
-	var pce PodcastEpisode
-	err = json.Unmarshal(input, &pce)
+	fn, err := os.Stat(config.StoragePath)
+	if fn != nil {
+		panic(fmt.Errorf("there's already a directory at %s\n", config.StoragePath))
+	}
+	err = os.Mkdir(config.StoragePath, 0700)
 	if err != nil {
 		panic(err)
 	}
-	pp, err := json.MarshalIndent(pce, "", "\t")
+	addEpisode(feed.Items[0], fmt.Sprintf("%s/%s", config.StoragePath, "0"))
+	publishToIPFS(config)
+	return nil
+}
+
+func getFeed(url string) (*gofeed.Feed, error) {
+
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	fp := gofeed.NewParser()
+	feed, err := fp.ParseURLWithContext(url, ctx)
+	if err != nil {
+		return nil, err
+	}
+	return feed, nil
+}
+
+func addEpisode(episode *gofeed.Item, path string) {
+	fmt.Printf("path=%s\n", path)
+	err := os.Mkdir(path, 0700)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(string(pp))
+	addText(path, "title", episode.Title)
+}
+
+func addText(path string, key string, value string) {
+	f, err := os.Create(fmt.Sprintf("%s/%s", path, key))
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	w := bufio.NewWriter(f)
+	_, err = w.WriteString(value)
+	w.Flush()
+
+}
+
+func addFile(path string, key string, url string) {
+
+}
+
+func publishToIPFS(config *Config) {
+	fmt.Println("unimplemented")
 }
