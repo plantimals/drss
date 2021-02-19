@@ -17,6 +17,7 @@ import (
 
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/mmcdole/gofeed"
+	ext "github.com/mmcdole/gofeed/extensions"
 )
 
 type Config struct {
@@ -25,15 +26,55 @@ type Config struct {
 }
 
 type Link struct {
-	addr string
+	Addr string `json:"/"`
 }
 
 func (l *Link) toJSON() string {
-	return fmt.Sprintf("{\"/\":\"%s\"", l.addr)
+	return fmt.Sprintf("{\"/\":\"%s\"}", l.Addr)
+}
+
+//from gofeed
+type Person struct {
+	Name  string `json:"name,omitempty"`
+	Email string `json:"email,omitempty"`
+}
+
+//from gofeed
+type Image struct {
+	URL   string `json:"url,omitempty"`
+	Title string `json:"title,omitempty"`
+}
+
+//from gofeed
+type Enclosure struct {
+	URL    string `json:"url,omitempty"`
+	Length string `json:"length,omitempty"`
+	Type   string `json:"type,omitempty"`
 }
 
 type IPFeed struct {
-	item string `json:"item"`
+	Links           []Link
+	Title           string                   `json:"title,omitempty"`
+	Description     string                   `json:"description,omitempty"`
+	Link            string                   `json:"link,omitempty"`
+	FeedLink        string                   `json:"feedLink,omitempty"`
+	Updated         string                   `json:"updated,omitempty"`
+	Content         string                   `json:"content,omitempty"`
+	UpdatedParsed   *time.Time               `json:"updatedParsed,omitempty"`
+	Published       string                   `json:"published,omitempty"`
+	PublishedParsed *time.Time               `json:"publishedParsed,omitempty"`
+	Author          *Person                  `json:"author,omitempty"`
+	Language        string                   `json:"language,omitempty"`
+	Image           *Image                   `json:"image,omitempty"`
+	Copyright       string                   `json:"copyright,omitempty"`
+	Generator       string                   `json:"generator,omitempty"`
+	Categories      []string                 `json:"categories,omitempty"`
+	DublinCoreExt   *ext.DublinCoreExtension `json:"dcExt,omitempty"`
+	ITunesExt       *ext.ITunesFeedExtension `json:"itunesExt,omitempty"`
+	Extensions      ext.Extensions           `json:"extensions,omitempty"`
+	Custom          map[string]string        `json:"custom,omitempty"`
+	FeedType        string                   `json:"feedType,omitempty"`
+	FeedVersion     string                   `json:"feedVersion,omitempty"`
 }
 
 func parseFlags() *Config {
@@ -62,26 +103,61 @@ func rssToISS(config *Config) error {
 	}
 	s := shell.NewShell("localhost:5001")
 
-	var itemNodes []string
-	//for _, i := range feed.Items {
-	itemNodes = append(itemNodes, getItemNode(feed.Items[0], s))
-	//itemNodes = append(itemNodes, getItemNode(feed.Items[1], s))
-	//}
-	fmt.Println(getFeedNode(itemNodes, s))
+	var itemNodes []Link
+	for _, i := range feed.Items {
+		itemNodes = append(itemNodes, getItemNode(i, s))
+	}
+
+	fs := getFeedNode(feed, itemNodes, s)
+	fmt.Println(fs)
+	fmt.Println(strings.ToLower(fs))
 	return nil
 }
 
-func getFeedNode(f *gofeed.Feed, items []string, s *shell.Shell) string {
+func getFeedNode(f *gofeed.Feed, items []Link, s *shell.Shell) string {
+	ipf := IPFeed{
+		//Links:       items,
+		Title:           f.Title,
+		Description:     f.Description,
+		Link:            f.Link,
+		FeedLink:        f.FeedLink,
+		Updated:         f.Updated,
+		UpdatedParsed:   f.UpdatedParsed,
+		Published:       f.Published,
+		PublishedParsed: f.PublishedParsed,
+		Author:          (*Person)(f.Author),
+		Language:        f.Language,
+		Image:           (*Image)(f.Image),
+		Copyright:       f.Copyright,
+		Generator:       f.Generator,
+		Categories:      f.Categories,
+		DublinCoreExt:   f.DublinCoreExt,
+		ITunesExt:       f.ITunesExt,
+		Extensions:      f.Extensions,
+		Custom:          f.Custom,
+		FeedType:        f.FeedType,
+		FeedVersion:     f.FeedVersion,
+	}
 
+	for _, i := range items {
+		ipf.Links = append(ipf.Links, i)
+	}
+
+	j, err := json.Marshal(ipf)
+	if err != nil {
+		panic(err)
+	}
+	c, err := s.DagPut(j, "json", "cbor")
+	return strings.ToUpper(c)
 }
 
-func getItemNode(i *gofeed.Item, s *shell.Shell) string {
+func getItemNode(i *gofeed.Item, s *shell.Shell) Link {
 	ib, err := getItemJSON(i)
 	c, err := s.DagPut(ib, "json", "cbor")
 	if err != nil {
 		panic(err)
 	}
-	return strings.ToUpper(c)
+	return Link{strings.ToUpper(c)}
 }
 
 func getItemJSON(i *gofeed.Item) ([]byte, error) {
