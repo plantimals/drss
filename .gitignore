@@ -1,3 +1,5 @@
 drss
 feed/
 vcp-feed
+*.json
+*.mp3
