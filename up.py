@@ -2,7 +2,7 @@
 
 
 def main():
-    str = "bafyreibgquj3d2m4lztsiliikvlyozpt4r7yfx5onvbntqwatcasuqq4hm"
+    str = "bafybeibqt5ywylcf4taupofsu7ai3s22xlkh3qx52whvyyq23ptjozd6dy"
     print str.upper()
 
 if __name__ == "__main__":

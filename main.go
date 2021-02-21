@@ -10,12 +10,13 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"strings"
 	"time"
 
 	"log"
 
+	"github.com/ipfs/go-cid"
 	shell "github.com/ipfs/go-ipfs-api"
+	"github.com/ipfs/go-ipfs-api/options"
 	"github.com/mmcdole/gofeed"
 	ext "github.com/mmcdole/gofeed/extensions"
 )
@@ -23,14 +24,6 @@ import (
 type Config struct {
 	StoragePath string
 	FeedURL     string
-}
-
-type Link struct {
-	Addr string `json:"/"`
-}
-
-func (l *Link) toJSON() string {
-	return fmt.Sprintf("{\"/\":\"%s\"}", l.Addr)
 }
 
 //from gofeed
@@ -52,8 +45,19 @@ type Enclosure struct {
 	Type   string `json:"type,omitempty"`
 }
 
+type IPItem struct {
+	RSSItem    cid.Cid   `json:"rssitem"`
+	Enclosures []cid.Cid `json:"enclosures,omitempty"`
+}
+
+type IPEnclosure struct {
+	URL      string  `json:"url"`
+	FileType string  `json:"fileType"`
+	File     cid.Cid `json:"file"`
+}
+
 type IPFeed struct {
-	Links           []Link
+	Items           []cid.Cid
 	Title           string                   `json:"title,omitempty"`
 	Description     string                   `json:"description,omitempty"`
 	Link            string                   `json:"link,omitempty"`
@@ -103,18 +107,68 @@ func rssToISS(config *Config) error {
 	}
 	s := shell.NewShell("localhost:5001")
 
-	var itemNodes []Link
+	var itemNodes []*cid.Cid
 	for _, i := range feed.Items {
 		itemNodes = append(itemNodes, getItemNode(i, s))
 	}
 
 	fs := getFeedNode(feed, itemNodes, s)
-	fmt.Println(fs)
-	fmt.Println(strings.ToLower(fs))
+	feedj, err := fs.MarshalJSON()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(feedj))
 	return nil
 }
 
-func getFeedNode(f *gofeed.Feed, items []Link, s *shell.Shell) string {
+func getItemNode(i *gofeed.Item, s *shell.Shell) *cid.Cid {
+	ij, err := getItemJSON(i)
+	if err != nil {
+		panic(err)
+	}
+	return dagPut(ij, s)
+}
+
+func dagPut(json []byte, s *shell.Shell) *cid.Cid {
+	ms, err := s.DagPutWithOpts(
+		json,
+		options.Dag.InputEnc("json"),
+		options.Dag.Kind("cbor"),
+		options.Dag.Hash("sha2-256"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	c, err := cid.Decode(ms)
+	if err != nil {
+		panic(err)
+	}
+	return &c
+}
+
+func getItemJSON(i *gofeed.Item) ([]byte, error) {
+	answer, err := json.Marshal(i)
+	if err != nil {
+		return nil, err
+	}
+	return answer, nil
+}
+
+func getFeed(url string) (*gofeed.Feed, error) {
+
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	fp := gofeed.NewParser()
+	feed, err := fp.ParseURLWithContext(url, ctx)
+	if err != nil {
+		return nil, err
+	}
+	fmt.Printf("found %v items\n", len(feed.Items))
+
+	return feed, nil
+}
+
+func getFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
 	ipf := IPFeed{
 		//Links:       items,
 		Title:           f.Title,
@@ -138,47 +192,14 @@ func getFeedNode(f *gofeed.Feed, items []Link, s *shell.Shell) string {
 		FeedType:        f.FeedType,
 		FeedVersion:     f.FeedVersion,
 	}
-
-	for _, i := range items {
-		ipf.Links = append(ipf.Links, i)
+	for _, cid := range items {
+		ipf.Items = append(ipf.Items, *cid)
 	}
-
 	j, err := json.Marshal(ipf)
 	if err != nil {
 		panic(err)
 	}
-	c, err := s.DagPut(j, "json", "cbor")
-	return strings.ToUpper(c)
-}
-
-func getItemNode(i *gofeed.Item, s *shell.Shell) Link {
-	ib, err := getItemJSON(i)
-	c, err := s.DagPut(ib, "json", "cbor")
-	if err != nil {
-		panic(err)
-	}
-	return Link{strings.ToUpper(c)}
-}
-
-func getItemJSON(i *gofeed.Item) ([]byte, error) {
-	answer, err := json.Marshal(i)
-	if err != nil {
-		return nil, err
-	}
-	return answer, nil
-}
-
-func getFeed(url string) (*gofeed.Feed, error) {
-
-	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
-	defer cancel()
-	fp := gofeed.NewParser()
-	feed, err := fp.ParseURLWithContext(url, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	return feed, nil
+	return dagPut(j, s)
 }
 
 func addEpisode(episode *gofeed.Item, path string) {
