@@ -57,7 +57,7 @@ type IPEnclosure struct {
 }
 
 type IPFeed struct {
-	Items           []cid.Cid
+	Items           []cid.Cid                `json:"items,omitempty"`
 	Title           string                   `json:"title,omitempty"`
 	Description     string                   `json:"description,omitempty"`
 	Link            string                   `json:"link,omitempty"`
@@ -97,10 +97,15 @@ func parseFlags() *Config {
 
 func main() {
 	config := parseFlags()
-	rssToISS(config)
+	cid := rssToISS(config)
+	json, err := cid.MarshalJSON()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(json))
 }
 
-func rssToISS(config *Config) error {
+func rssToISS(config *Config) *cid.Cid {
 	feed, err := getFeed(config.FeedURL)
 	if err != nil {
 		panic(err)
@@ -111,14 +116,7 @@ func rssToISS(config *Config) error {
 	for _, i := range feed.Items {
 		itemNodes = append(itemNodes, getItemNode(i, s))
 	}
-
-	fs := getFeedNode(feed, itemNodes, s)
-	feedj, err := fs.MarshalJSON()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(string(feedj))
-	return nil
+	return getFeedNode(feed, itemNodes, s)
 }
 
 func getItemNode(i *gofeed.Item, s *shell.Shell) *cid.Cid {
@@ -255,8 +253,4 @@ func addFile(path string, key string, url string) {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func publishToIPFS(config *Config) {
-	fmt.Println("unimplemented")
 }
