@@ -18,70 +18,10 @@ import (
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/ipfs/go-ipfs-api/options"
 	"github.com/mmcdole/gofeed"
-	ext "github.com/mmcdole/gofeed/extensions"
+	"github.com/plantimals.org/ipfsrss/feeds"
 )
 
-type Config struct {
-	StoragePath string
-	FeedURL     string
-}
-
-//from gofeed
-type Person struct {
-	Name  string `json:"name,omitempty"`
-	Email string `json:"email,omitempty"`
-}
-
-//from gofeed
-type Image struct {
-	URL   string `json:"url,omitempty"`
-	Title string `json:"title,omitempty"`
-}
-
-//from gofeed
-type Enclosure struct {
-	URL    string `json:"url,omitempty"`
-	Length string `json:"length,omitempty"`
-	Type   string `json:"type,omitempty"`
-}
-
-type IPItem struct {
-	RSSItem    cid.Cid   `json:"rssitem"`
-	Enclosures []cid.Cid `json:"enclosures,omitempty"`
-}
-
-type IPEnclosure struct {
-	URL      string  `json:"url"`
-	FileType string  `json:"fileType"`
-	File     cid.Cid `json:"file"`
-}
-
-type IPFeed struct {
-	Items           []cid.Cid                `json:"items,omitempty"`
-	Title           string                   `json:"title,omitempty"`
-	Description     string                   `json:"description,omitempty"`
-	Link            string                   `json:"link,omitempty"`
-	FeedLink        string                   `json:"feedLink,omitempty"`
-	Updated         string                   `json:"updated,omitempty"`
-	Content         string                   `json:"content,omitempty"`
-	UpdatedParsed   *time.Time               `json:"updatedParsed,omitempty"`
-	Published       string                   `json:"published,omitempty"`
-	PublishedParsed *time.Time               `json:"publishedParsed,omitempty"`
-	Author          *Person                  `json:"author,omitempty"`
-	Language        string                   `json:"language,omitempty"`
-	Image           *Image                   `json:"image,omitempty"`
-	Copyright       string                   `json:"copyright,omitempty"`
-	Generator       string                   `json:"generator,omitempty"`
-	Categories      []string                 `json:"categories,omitempty"`
-	DublinCoreExt   *ext.DublinCoreExtension `json:"dcExt,omitempty"`
-	ITunesExt       *ext.ITunesFeedExtension `json:"itunesExt,omitempty"`
-	Extensions      ext.Extensions           `json:"extensions,omitempty"`
-	Custom          map[string]string        `json:"custom,omitempty"`
-	FeedType        string                   `json:"feedType,omitempty"`
-	FeedVersion     string                   `json:"feedVersion,omitempty"`
-}
-
-func parseFlags() *Config {
+func parseFlags() *feeds.Config {
 	var storagePath string
 	var feedURL string
 	flag.StringVar(&storagePath, "storage", "./feed", "path to construct feed")
@@ -92,7 +32,7 @@ func parseFlags() *Config {
 	if err != nil {
 		panic(err)
 	}
-	return &Config{StoragePath: storagePath, FeedURL: feedURL}
+	return &feeds.Config{StoragePath: storagePath, FeedURL: feedURL}
 }
 
 func main() {
@@ -105,7 +45,7 @@ func main() {
 	fmt.Println(string(json))
 }
 
-func rssToISS(config *Config) *cid.Cid {
+func rssToISS(config *feeds.Config) *cid.Cid {
 	feed, err := getFeed(config.FeedURL)
 	if err != nil {
 		panic(err)
@@ -167,8 +107,7 @@ func getFeed(url string) (*gofeed.Feed, error) {
 }
 
 func getFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
-	ipf := IPFeed{
-		//Links:       items,
+	ipf := feeds.IPFeed{
 		Title:           f.Title,
 		Description:     f.Description,
 		Link:            f.Link,
@@ -177,9 +116,9 @@ func getFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
 		UpdatedParsed:   f.UpdatedParsed,
 		Published:       f.Published,
 		PublishedParsed: f.PublishedParsed,
-		Author:          (*Person)(f.Author),
+		Author:          (*feeds.Person)(f.Author),
 		Language:        f.Language,
-		Image:           (*Image)(f.Image),
+		Image:           (*feeds.Image)(f.Image),
 		Copyright:       f.Copyright,
 		Generator:       f.Generator,
 		Categories:      f.Categories,
@@ -191,7 +130,7 @@ func getFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
 		FeedVersion:     f.FeedVersion,
 	}
 	for _, cid := range items {
-		ipf.Items = append(ipf.Items, *cid)
+		ipf.Items = append(ipf.Items, &cid)
 	}
 	j, err := json.Marshal(ipf)
 	if err != nil {
