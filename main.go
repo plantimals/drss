@@ -18,7 +18,7 @@ import (
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/ipfs/go-ipfs-api/options"
 	"github.com/mmcdole/gofeed"
-	"github.com/plantimals.org/ipfsrss/feeds"
+	"github.com/plantimals/ipfsrss/feeds"
 )
 
 func parseFlags() *feeds.Config {
@@ -130,7 +130,7 @@ func getFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
 		FeedVersion:     f.FeedVersion,
 	}
 	for _, cid := range items {
-		ipf.Items = append(ipf.Items, &cid)
+		ipf.Items = append(ipf.Items, *cid)
 	}
 	j, err := json.Marshal(ipf)
 	if err != nil {
