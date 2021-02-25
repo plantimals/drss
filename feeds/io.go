@@ -10,12 +10,12 @@ import (
 )
 
 func GetFeedNode(feedCid string, s *shell.Shell) (*IPFeed, error) {
-	answer := IPFeed{}
+	answer := &IPFeed{}
 	err := s.DagGet(feedCid, answer)
 	if err != nil {
 		return nil, err
 	}
-	return &answer, nil
+	return answer, nil
 }
 
 func PutFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
