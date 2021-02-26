@@ -43,8 +43,8 @@ type IPEnclosure struct {
 }
 
 type IPFeed struct {
+	Items           []cid.Cid
 	ID              string                   `json:"_id"`
-	Items           []cid.Cid                `json:"/,omitempty"`
 	Title           string                   `json:"title"`
 	Description     string                   `json:"description,omitempty"`
 	Link            string                   `json:"link,omitempty"`
