@@ -1,4 +1,4 @@
-module github.com/plantimals/ipfsrss
+module github.com/plantimals/drss
 
 go 1.15
 
