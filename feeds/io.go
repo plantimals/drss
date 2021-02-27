@@ -25,13 +25,14 @@ func GetIPFeed(f *gofeed.Feed, ipItems []*IPItem, s *shell.Shell) (*IPFeed, erro
 		Description: f.Description,
 		Link:        f.Link,
 		Updated:     f.Updated,
+		Feed:        f,
 	}
-	if f.Image != nil {
+	if f.Image != nil && f.Image.URL != "" {
 		imageCID, err := storeFile(f.Image.URL, s)
 		if err != nil {
 			panic(err)
 		}
-		*ipFeed.Image = IPEnclosure{
+		ipFeed.Image = &IPEnclosure{
 			URL:      f.Image.URL,
 			FileType: "image",
 			File:     *imageCID,

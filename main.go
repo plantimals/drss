@@ -11,7 +11,7 @@ import (
 	"github.com/ipfs/go-cid"
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/mmcdole/gofeed"
-	"github.com/plantimals/ipfsrss/feeds"
+	"github.com/plantimals/drss/feeds"
 )
 
 func parseFlags() *feeds.Config {
@@ -19,7 +19,7 @@ func parseFlags() *feeds.Config {
 	var feedURL string
 	var dumpSchema bool
 	flag.StringVar(&storagePath, "storage", "./feed", "path to construct feed")
-	flag.StringVar(&feedURL, "feedURL", "https://feeds.transistor.fm/the-vance-crowe-podcast", "feed URL")
+	flag.StringVar(&feedURL, "feedURL", "https://ipfs.io/blog/index.xml", "feed URL")
 	flag.BoolVar(&dumpSchema, "schema", false, "dump the IPFeed jsonschema")
 	flag.Parse()
 
@@ -27,7 +27,11 @@ func parseFlags() *feeds.Config {
 	if err != nil {
 		panic(err)
 	}
-	return &feeds.Config{StoragePath: storagePath, FeedURL: feedURL, DumpSchema: dumpSchema}
+	return &feeds.Config{
+		StoragePath: storagePath,
+		FeedURL:     feedURL,
+		DumpSchema:  dumpSchema,
+	}
 }
 
 func main() {

@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title></title>
+    <link>https://blog.ipfs.io/</link>
+    <image>
+      <url>https://blog.ipfs.io/img/ipfs-logo-256-ice.png</url>
+      <title></title>
+      <link>https://blog.ipfs.io/</link>
+    </image>
+    <description>Recent content on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 26 Feb 2021 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.ipfs.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IPFS at ETHDenver</title>
+      <link>https://blog.ipfs.io/2021-02-26-ipfs-at-ethdenver/</link>
+      <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/2021-02-26-ipfs-at-ethdenver/</guid>
+      <description>The annual premier hackathon event for the North American Ethereum community, ETHDenver and ColoradoJam, has come to a close. The 2021 event was 100% virtual, utilizing the gaming platform Gamerjibe as a virtual event venue, creating a unique and refreshing way for the dweb community to gather together.</description>
+      <content:encoded><![CDATA[
+
+<p>The annual premier hackathon event for the North American Ethereum community, ETHDenver and ColoradoJam, has come to a close. The 2021 event was 100% virtual, utilizing the gaming platform Gamerjibe as a virtual event venue, creating a unique and refreshing way for the dweb community to gather together.</p>
+
+<p style="text-align: center;">
+  <img src="/img/ethdenver-winners.png" alt="ETHDenver & ColoradoJam 2021 Bounty, Track & Quadratic Funding Winners">
+</p>
+
+<h2 id="event-highlights">Event highlights</h2>
+
+<p>When it came to building with IPFS, we saw NFT marketplaces, decentralized and off-chain gaming, platforms solving real world issues involving life insurance and genetic testing, and consistently created ways to lower barriers for wallet creation, token creation, and more.
+ * 31 out 86 total projects submitted to ETHDenver applied for IPFS bounties
+ * 64 out of 86 projects submitted applied for IPFS-ecosystem tooling bounties (the most popular being Ceramic, Textile and Metamask)
+ * The IPFS project awarded bounties to 11 submissions for their creative use of IPFS
+ * 32 of the 51 winning projects were award bounties for using IPFS-ecosystem tooling</p>
+
+<p>See all of the <a href="https://ethdenver2021.devfolio.co/submissions">ETHDenver submissions here</a> and read <a href="https://medium.com/ethdenver/ethdenver-coloradojam-2021-bounty-track-quadratic-funding-winners-805cf5f2de76">about the winners</a>, too!</p>
+
+<p style="text-align: center;">
+  <img src="/img/virtual-castle.jpeg" alt="Folks from Slate and Textile chill in the bean bag area of the Shill Zone">
+</p>
+
+<h2 id="the-virtual-castle">The Virtual Castle</h2>
+
+<p>Alongside the event Discord, the livestream, and the hacks, ETHDenver also created a virtual venue for attendees to wander around, try on swag, gather collectibles, check out sponsor booths, and hang out as a community.</p>
+
+<p>In lieu of a sponsor booth, the IPFS Help Desk returned! Folks from IPFS, Slate, Fleek, Pinata, Opera, and Foundation all took turns hosting as their digital avatars, even occasionally running into a rainbow Pegabufficorn.</p>
+
+<p style="text-align: center;">
+  <img src="/img/help-desk.png" alt="The IPFS Help Desk at ETHDenver 2021">
+</p>
+
+<h2 id="on-the-main-stage">On the main stage</h2>
+
+<ul>
+<li>19 of the presentations featured were by crafted by folks in the IPFS ecosystem</li>
+<li>Watch all of the <a href="https://www.youtube.com/playlist?list=PLAy4HNUNlzRkiRQFnr-gu6CyddoVTxeTy">2021 presentations here</a></li>
+<li>We recommend watching:
+
+<ul>
+<li>Matt Ober from Pinata hosted a technical workshop on <a href="https://www.youtube.com/watch?v=vttw1bjC2no&amp;list=PLAy4HNUNlzRkiRQFnr-gu6CyddoVTxeTy&amp;index=132">IPFS: The Global CID</a></li>
+<li>IPFS Ecosystem Lead Dietrich Ayala participated in <a href="https://www.youtube.com/watch?v=OgzQAZj3Y-E&amp;list=PLAy4HNUNlzRkiRQFnr-gu6CyddoVTxeTy&amp;index=87">a panel on the bridge from Web2.0 &gt; Web3</a> with Igor Mandrigin and Susie Batt from Opera, and Bradley Kam from Unstoppable Domains.</li>
+</ul></li>
+</ul>
+
+<h2 id="new-projects-in-the-ecosystem">New projects in the ecosystem</h2>
+
+<p>Here are just a few of the projects from ETHDenver that have us excited about building even more with IPFS!</p>
+
+<ul>
+<li><strong>Documint</strong>, an IDE for Ceramic providing developers with a powerful interface for viewing, creating, and editing smart documents.
+
+<ul>
+<li><a href="https://devfolio.co/submissions/documint-eb71">Project submission</a></li>
+<li><a href="https://documint.net/">Project site</a></li>
+<li><a href="https://github.com/xops/documint">Project GitHub</a></li>
+</ul></li>
+<li><strong>Gasless Wallet</strong>, an Ethereum Virtual Machine (EVM) blockchain-agnostic wallet allowing users to pay transactions fee in any of the ERC-20 standard tokens.
+
+<ul>
+<li><a href="https://devfolio.co/submissions/gasless-wallet-b236">Project submission</a></li>
+<li><a href="https://bafybeiajtc3zk5or5d3yfdixssal3oyx5otpbxvribnefq54jfwvfkid5e.ipfs.infura-ipfs.io/">Project site</a></li>
+<li><a href="https://github.com/sftwr-prjct-dev/gasless">Project GitHub</a></li>
+</ul></li>
+<li><strong>TruReview</strong>, a censorship-resistant review platform, allowing people to store their rich text/image/video reviews with IDX and Ceramic (stored on IPFS).
+
+<ul>
+<li><a href="https://devfolio.co/submissions/blah-7859">Project submission</a></li>
+<li><a href="https://www.figma.com/proto/0eMGJeHltlcCKp4eTqdl5u/True-Review?node-id=162%3A1521&amp;viewport=879%2C-40%2C0.06251474469900131&amp;scaling=contain&amp;hotspot-hints=0">Project demo</a></li>
+<li><a href="https://github.com/twos-complement/eth-denver-2021">Project GitHub</a></li>
+</ul></li>
+<li><strong>Timelock</strong>, a simple app that helps lock money for a future date using a smart contract, which is then posted to IPFS.
+
+<ul>
+<li><a href="https://devfolio.co/submissions/timelock-08af">Project submission</a></li>
+<li><a href="https://web3-time-lock.glitch.me/">Project site</a></li>
+</ul></li>
+<li><strong>Super Rinkeby</strong>, a decentralized Super Mario-like game where you can magically change your character through an NFT purchase.
+
+<ul>
+<li><a href="https://devfolio.co/submissions/super-rinkeby-game-a88e">Project submission</a></li>
+<li><a href="http://superrinkeby.com/">Project site</a></li>
+<li><a href="https://github.com/leon-do/super-rinkeby-website">Project GitHub</a></li>
+</ul></li>
+</ul>
+
+<p>Our thanks go out to the organizers of ETHDenver and ColoradoJam 2021, the amazing IPFS community for their participation, and of course, the ETHDenver builders who inspired us with their inventive projects.  We look forward to seeing what folks come up with next in the many more hackathons to come in 2021!</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Welcome to IPFS Weekly 124</title>
+      <link>https://blog.ipfs.io/weekly-124/</link>
+      <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/weekly-124/</guid>
+      <description>Here’s what’s happening in the InterPlanetary File System galaxy!
+What’s new in go-ipfs 0.8.0? The latest release from the IPFS protocol is here, and with it, go-ipfs 0.</description>
+      <content:encoded><![CDATA[
+
+<p>Here’s what’s happening in the <a href="https://ipfs.io/">InterPlanetary File System</a> galaxy!</p>
+
+<h2 id="what-s-new-in-go-ipfs-0-8-0">What’s new in go-ipfs 0.8.0?</h2>
+
+<p>The latest release from the IPFS protocol is here, and with it, go-ipfs 0.8.0 brings the ability to ask remote services to pin data for you! Other features include remote MFS pinning, faster pinning, and help for DNSLink names on https:// subdomains.</p>
+
+<p><a href="https://blog.ipfs.io/2021-02-19-go-ipfs-0-8-0/">Read more</a></p>
+
+<h2 id="new-libp2p-comes-to-protoschool">NEW: libp2p comes to ProtoSchool</h2>
+
+<p>The best place to learn about decentralized technology, ProtoSchool, has recently added lip2p to their curriculum. Now learners can participate in code-free tutorials, intros to dweb concepts, hands-on coding challenging and more!</p>
+
+<p><a href="https://blog.ipfs.io/2021-02-17-libp2p-comes-to-protoschool/">Read more</a></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TM7aW0NFOJM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="video-ipfs-libp2p-in-2020">VIDEO: IPFS &amp; libp2p in 2020</h2>
+
+<p>In case you missed it—IPFS project lead Molly Mackinlay gave a 2020 year-in-review on the latest with the IPFS ecosystem at CSCON[0], a virtual blockchain conference, late last year. Check it out!</p>
+
+<h2 id="brand-new-on-ipfs">Brand new on IPFS</h2>
+
+<ul>
+<li><a href="https://blog.fleek.co/posts/filecoin-archiving-backup-fleek-sites-and-storage">Fleek announced</a> automated Filecoin archiving and back up for all sites and storageon Fleek!</li>
+<li><a href="https://blogs.gnome.org/hughsie/2021/02/16/fwupd-1-5-6/">fwupd</a>, the Linux firmware update service used by Lenovo, Google, Acer, Dell and more, now supports IPFS!</li>
+<li><a href="https://blog.davidburela.com/2020/11/16/ipfs-on-risc-v/">Check out this work</a> to get IPFS running on RISC-V, an OSS ISA used to create open microprocessors.</li>
+<li>Wondering what are <a href="https://twitter.com/unstoppableweb/status/1363488491255037952">blockchain domains</a>, and how are they different from traditional .com domains?</li>
+</ul>
+
+<h2 id="around-the-ecosystem">Around the ecosystem 🌏</h2>
+
+<p>How to own <a href="https://medium.com/coinmonks/how-to-own-substrapunks-the-first-nfts-in-live-substrate-blockchain-polkadot-f6c14531f039">SubstraPunks</a>, the first NFTs in Live Substrate Blockchain from Polkadot.</p>
+
+<p><a href="https://polygontech.medium.com/the-graph-expands-to-layer-2-blockchains-and-brings-indexed-open-data-to-polygon-2bad0c5a3338">The Graph</a> expands to Layer 2 Blockchains and Brings Indexed Open Data to Polygon.</p>
+
+<p>Check out <a href="https://hicetnunc2000.medium.com/objkt-swap-62dbaf776336">OBJKT Swap</a>, built with IPFS.</p>
+
+<p>Reminder that <a href="https://medium.com/the-ethereum-name-service/reminder-that-ens-names-are-nfts-what-this-means-for-your-names-b7bcbea8715e">ENS Names Are NFTs</a>: What This Means for Your Names.</p>
+
+<p><a href="https://medium.com/the-ethereum-name-service/cloudflare-and-fleek-make-ens-ipfs-site-deployment-as-easy-as-ever-262c990a7514">Fleek</a> now makes deploying and maintaining an ENS+IPFS websites easier than ever!</p>
+
+<p><a href="https://twitter.com/unstoppableweb/status/1363608689643413505?s=20">Unstoppable Domains</a> is hosting an AMA on Clubhouse this Thursday to answer questions about blockchain domains, NFTs, and their recent Cloudflare announcement.</p>
+
+<p>From ETHDenver: <a href="https://tiles.mechanaut.xyz/">Tiles</a> is a document browser and explorer that gives incredible insight into all the real-time activity happening on the Ceramic Network.</p>
+
+<h2 id="join-us-for-the-next-ipfs-community-meetup">Join us for the next IPFS community meetup</h2>
+
+<p>Mark your calendars for March 23 now, and stay tuned for upcoming details on our featured speakers. Also, if you have an idea for a presentation or a lightning talk, now would be a great time to reach out!</p>
+
+<p><a href="https://www.meetup.com/San-Francisco-IPFS/events/276123396/">Register for details</a></p>
+
+<h2 id="job-hunting-work-on-ipfs">Job hunting? Work on IPFS!</h2>
+
+<p><a href="https://textile.breezy.hr/p/cad4ea4bf0c9-senior-integrations-engineer">Senior Integration Engineer</a>: You will be responsible for providing technical leadership and guidance to our users while they are integrating with libp2p, IPFS, Filecoin, and Textile. Textile, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2507095">Technical Project Manager (Infura)</a>: Track active projects, remove roadblocks, and support the development team in identifying and keeping up-to-date all project requirements. Manage project, feature, technical debt, and bug backlogs working across teams in prioritizing work and planning out sprints. ConsenSys, Remote.</p>
+
+<p><a href="https://jobs.lever.co/3box/ec1093c5-ed31-483c-b1b3-49b07bd0bd2e">Ecosystem Developer</a>: We are looking for a technical community manager to help us create a world-class developer ecosystem and experience around our open source community. 3Box, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2426803">Sr. Backend Engineer</a>: Have built systems at scale in the past and can discuss the architectural tradeoffs that went into them. Experience with data lakes, data warehousing, and OLAP technologies. Self-directed. We want you to own the systems you build. ConsenSys, Remote.</p>
+
+<p><strong>Next stop, Mars!</strong></p>
+
+<p>Get involved with IPFS by checking us out on <a href="https://github.com/ipfs">GitHub</a>, joining discussions on <a href="https://discuss.ipfs.io/">our community forum</a>, or hitting us up <a href="https://riot.im/app/#/room/#ipfs:matrix.org">in chat</a>. Have a suggestion? <a href="mailto:newsletter@ipfs.io">Email us</a>.</p>
+
+<p>Get the IPFS Weekly in your inbox, each Tuesday.
+<p><a href="https://ipfs.us4.list-manage.com/subscribe?u=25473244c7d18b897f5a1ff6b&amp;id=cad54b2230" class="button button-primary">Sign up now</a></p></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>go-ipfs 0.8.0, and Remote Pinning, is here!</title>
+      <link>https://blog.ipfs.io/2021-02-19-go-ipfs-0-8-0/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/2021-02-19-go-ipfs-0-8-0/</guid>
+      <description>What&amp;rsquo;s new in go-ipfs 0.8.0? This release is focused on making it easier to work with pins! We have some snazzy new features around being able to ask remote services to pin data for you, and modifying large pin sets is much faster than ever before.</description>
+      <content:encoded><![CDATA[
+
+<p><img src="/125-go-ipfs-0-8-0/125-go-ipfs-0-8-0-wide.png" alt="go-ipfs 0.8.0" /></p>
+
+<h2 id="what-s-new-in-go-ipfs-0-8-0">What&rsquo;s new in go-ipfs 0.8.0?</h2>
+
+<p>This release is focused on making it easier to work with pins! We have some snazzy new features around being able to ask remote services to pin data for you, and modifying large pin sets is much faster than ever before.</p>
+
+<h2 id="highlights">🔦 Highlights</h2>
+
+<h3 id="remote-pinning-services">🧷 Remote pinning services</h3>
+
+<p>There is now support for asking remote services to pin data for you.</p>
+
+<p>This feature is a redesign of how we&rsquo;re thinking about pinning and includes some commonly requested features such as:</p>
+
+<ul>
+<li>Pins can have names (and coming soon metadata)</li>
+<li>Data can be pinned in either the foreground or background</li>
+<li>Pins can be searched for by name, CID, or status</li>
+</ul>
+
+<p>Command-line users benefit from <code>ipfs pin remote</code> commands, simplifying remote pinning operations. The built-in pinning service API client also executes all necessary remote calls under the hood:</p>
+
+<p><img style="margin-top: 1em; margin-bottom: 1em;" src="/125-go-ipfs-0-8-0/125-go-ipfs-0-8-0-diagram.png" alt="go-ipfs 0.8.0" /></p>
+
+<p>As long as a pinning service supports the vendor-agnostic <a href="https://ipfs.github.io/pinning-services-api-spec/">IPFS Pinning Service API</a>, it can be used directly in go-ipfs. (If you&rsquo;re a Pinata user, you can already <a href="https://pinata.cloud/documentation#PinningServicesAPI">check out their docs</a> for how to set everything up.)</p>
+
+<p>Examples include:</p>
+
+<pre><code class="language-sh">ipfs pin remote service add mysrv https://my-service.example.com/api-endpoint myAccessToken
+ipfs pin remote service ls --stat # confirm service mysrv is available
+</code></pre>
+
+<pre><code class="language-sh">ipfs pin remote add /ipfs/bafymydata --service=mysrv --name=myfile  # will block until status is pinned
+ipfs pin remote ls --service=mysrv --name=myfile
+ipfs pin remote rm --service=mysrv --name=myfile
+</code></pre>
+
+<pre><code class="language-sh">ipfs pin remote add /ipfs/bafymydata2 --service=mysrv --name=myfile2 --background  # queue pin request and finish instantly
+ipfs pin remote ls --service=mysrv --cid=bafymydata2 --status=queued,pinning,pinned,failed
+ipfs pin remote rm --service=mysrv --cid=bafymydata2 --status=queued,pinning,pinned,failed
+</code></pre>
+
+<p>More examples can be found under <code>ipfs pin remote --help</code>.</p>
+
+<p>A few notes:</p>
+
+<ul>
+<li>Remote pinning services work with recursive pins. This means commands like <code>ipfs pin remote ls</code> will not list indirectly pinned CIDs.</li>
+<li>By default, only finished, successful pins are listed. To list or remove pending/failed pins, pass explicit statuses: e.g. <code>--status=queued,pinning,pinned,failed</code></li>
+<li>While pinning service data is stored in the configuration file it cannot be edited directly via the <code>ipfs config</code> commands due to the sensitive nature of pinning service API keys. The <code>ipfs pin remote service</code> commands can be used for interacting with remote service settings.</li>
+<li>An OpenAPI <a href="https://github.com/ipfs/pinning-services-api-spec/blob/main/ipfs-pinning-service.yaml">ipfs-pinning-service.yaml</a> makes it easy to create or <a href="https://github.com/ipfs/pinning-services-api-spec#code-generation">generate</a> a compatible client/server. Anyone can implement it and allow for pin management.</li>
+<li>Additionally, HTTP API users now have access to new commands under <code>/api/v0/pin/remote</code>.</li>
+</ul>
+
+<h2 id="remote-mfs-pinning-policy">🏠 Remote MFS pinning policy</h2>
+
+<p>Every service added via <code>ipfs pin remote service add</code> can be tasked to update a pin every time the MFS root changes:</p>
+
+<pre><code class="language-sh">$ ipfs config --json Pinning.RemoteServices.mysrv.Policies.MFS.Enable
+</code></pre>
+
+<p>To avoid flooding the remote service with many updates, go-ipfs will send updates at most once every five minutes.
+Details about customizing behavior of this feature can be found in the <a href="https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#pinningremoteservices-policiesmfs">configuration docs</a>.</p>
+
+<h3 id="faster-local-pinning-and-unpinning">📌 Faster local pinning and unpinning</h3>
+
+<p>The pinning subsystem has been redesigned to be much faster and more flexible in how it tracks pins. For users who are working with many pins this will lead to a big speed increase in listing and modifying the set of pinned items as well as decreased memory usage.</p>
+
+<p>Part of the redesign was set up to account for being able to interact with local pins the same way we can now interact with remote pins (e.g. names, being allowed to pin the same CID multiple times, etc.). Keep posted for more improvements to pinning.</p>
+
+<h3 id="dnslink-names-on-https-subdomains">🔒 DNSLink names on https:// subdomains</h3>
+
+<p>Previously, DNSLink names would have trouble loading over subdomain gateways with HTTPS support since there is no way to get multi-level wildcard certificates (e.g. <code>en.wikipedia-on-ipfs.org.ipns.dweb.link</code> cannot be covered by <code>*.ipns.dweb.link</code>). Therefore, when trying to load DNSLink names over https:// subdomains in go-ipfs, we now forward to an encoded DNS name. Since DNS names cannot contain <code>.</code> in them they are escaped using <code>-</code>.</p>
+
+<p><code>/ipns/en.wikipedia-on-ipfs.org</code> →</p>
+
+<p><code>ipns://en.wikipedia-on-ipfs.org</code> →</p>
+
+<p><code>https://dweb.link/ipns/en.wikipedia-on-ipfs.org</code> →</p>
+
+<p><code>https://en-wikipedia--on--ipfs-org.ipns.dweb.link</code> 👈 a single DNS label, no TLS error</p>
+
+<p>Note: The last redirect is specific to HTTPS, and is triggered only when <code>X-Forwarded-Proto: https</code> header is present.<br />
+Recipes for setting up your own public gateway can be found in <a href="https://github.com/ipfs/go-ipfs/blob/master/docs/config.md#gateway-recipes">configuration docs</a>.</p>
+
+<h3 id="quic-update">💨 QUIC update</h3>
+
+<p>QUIC support has received a number of upgrades, including the ability to take advantage of larger UDP receive buffers for increased performance.</p>
+
+<p>Linux users may notice a logged error on daemon startup if your system needs extra configuration to allow IPFS to increase the buffer size. A helpful link for resolving this is in the log message as well as <a href="https://github.com/lucas-clemente/quic-go/wiki/UDP-Receive-Buffer-Size">here</a>.</p>
+
+<h3 id="no-more-darwin-386-builds">👋 No more Darwin 386 builds</h3>
+
+<p>Go 1.15 (the latest version of Go) <a href="https://github.com/golang/go/issues/34749">no longer supports</a> Darwin 386 and so we are dropping support as well.</p>
+
+<h3 id="changelog">Changelog</h3>
+
+<p>For a full list of updates included in this release, you can review the changelog within this <a href="https://github.com/ipfs/go-ipfs/releases/tag/v0.8.0">release post</a>.</p>
+
+<h3 id="coming-soon">Coming soon &hellip;</h3>
+
+<p>If you&rsquo;re an <a href="https://github.com/ipfs-shipyard/ipfs-desktop">IPFS Desktop</a> or <a href="https://github.com/ipfs-shipyard/ipfs-webui">IPFS Web UI</a> fan, you&rsquo;re in luck. These pinning improvements will land soon in GUI form, too — upcoming releases of Desktop and Web UI will allow you to use any remote pinning service that supports the IPFS Pinning Service API.</p>
+
+<h3 id="thank-you-contributors">Thank you contributors!</h3>
+
+<p>A huge thank you to <a href="https://github.com/ipfs/go-ipfs/releases/tag/v0.8.0">everyone who contributed</a> patches and improvements in this release, all 58 of you! We couldn’t have made this happen without your help and feedback. ❤</p>
+
+<h3 id="install-upgrade-and-join-us">Install, upgrade, and join us!</h3>
+
+<p>You can get started by <a href="https://dist.ipfs.io/#go-ipfs">installing go-ipfs</a> or upgrading to <a href="https://github.com/ipfs/go-ipfs/releases/tag/v0.8.0">go-ipfs 0.8</a>.</p>
+
+<p>There are many ways to get involved with IPFS based on your skill set, interest, and availability. Please check out our <a href="https://github.com/ipfs/community/blob/master/CONTRIBUTING.md">contribution page</a> on GitHub for guidance and next steps.</p>
+
+<p>This is an exciting time for IPFS and the web in general. Join us!</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Welcome to IPFS Weekly 123</title>
+      <link>https://blog.ipfs.io/weekly-123/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/weekly-123/</guid>
+      <description>Here’s what’s happening in the InterPlanetary File System galaxy!
+Your files 💖 for keeps forever 💖 with IPFS Right in time for Valentine’s Day, Opera’s Global Crypto Community Manager Susie Batt wrote this ode to our favorite decentralized protocol, and how seamlessly IPFS and Opera go together.</description>
+      <content:encoded><![CDATA[
+
+<p>Here’s what’s happening in the <a href="https://ipfs.io/">InterPlanetary File System</a> galaxy!</p>
+
+<h2 id="your-files-for-keeps-forever-with-ipfs">Your files 💖 for keeps forever 💖 with IPFS</h2>
+
+<p>Right in time for Valentine’s Day, Opera’s Global Crypto Community Manager Susie Batt wrote this ode to our favorite decentralized protocol, and how seamlessly IPFS and Opera go together. Bonus feature: see the panel on bridging Web 2.0 and Web3 technologies featuring folks from Opera, Unstoppable Domains, and IPFS.</p>
+
+<p><a href="https://blogs.opera.com/tips-and-tricks/2021/02/opera-crypto-files-for-keeps-ipfs-unstoppable-domains/">Read more</a></p>
+
+<h2 id="see-all-the-cool-things-folks-built-at-ethdenver">See all the cool things folks built at ETHDenver</h2>
+
+<p>The Pegabufficorn and Spork Marmots have gone back into hibernation since ETHDenver has come to a close. Over 30 projects applied for the IPFS project-specific bounties, and that’s not even counting the bounties offered by 14 other ecosystem members. See what they came up with in this full list of project submissions.</p>
+
+<p><a href="https://medium.com/ethdenver/every-project-submitted-at-ethdenver-coloradojam-2021-444a9be42e88">Check it out</a></p>
+
+<h2 id="human-readable-urls-and-other-things">Human readable URLs and other things</h2>
+
+<p>&hellip;folks are discussing at our favorite community forum for discussion: discuss.ipfs.io. Check out threads on use cases across the ecosystem, get help with your IPFS questions from some of the core team devs, or discover showcases, community meetups, or everyone’s favorite—protocol-specific discussions!</p>
+
+<p><a href="https://discuss.ipfs.io/">Start discussions</a></p>
+
+<h2 id="hang-out-with-ipfs-and-friends-next-tuesday">Hang out with IPFS and friends next Tuesday!</h2>
+
+<p>Join us in a week for talks from community hacker Leon Do, web archivist Ilya Kreymer, and RMRK specialist Viktor Valastin!</p>
+
+<p><a href="https://www.meetup.com/San-Francisco-IPFS/events/276018298/">Register today to attend</a></p>
+
+<h2 id="brand-new-on-ipfs">Brand new on IPFS</h2>
+
+<ul>
+<li>A detailed, unbiased <a href="https://medium.com/nerd-for-tech/brave-browser-review-e2ad87da5ef9">Brave browser</a> review by Arjan de Haan, a software engineer.</li>
+<li><a href="https://twitter.com/ScalaHQ/status/1361432463113916419?s=20">The Scala Project</a>, an IPFS-based private cryptocurrency, now has an IPFS-hosted website.</li>
+<li>Check out <a href="https://www.youtube.com/watch?v=z3UaRU0j8Vg&amp;feature=emb_logo">Parcel</a>, a self custodial treasury management platform built with Gnosis Safe, IPFS and Filecoin.</li>
+<li>Learn about <a href="https://www.youtube.com/watch?v=oIqC_sv8Xfo">JOSE, dagJOSE and DIDs</a> in this workshop from Ceramic during ETHDenver.</li>
+</ul>
+
+<h2 id="around-the-ecosystem">Around the ecosystem 🌏</h2>
+
+<p>It’s time for <a href="https://blog.fleek.co/posts/release-update-multiple-custom-domains-walletconnect-tld-verification">Fleek’s February releases</a>, including Multiple Custom Domain Support, a variety of wallet support, and more!</p>
+
+<p>ICYMI: catch up on this WhiteBIT and <a href="https://youtu.be/IKzcZlpNxvU">Unstoppable Domains AMA</a> session.</p>
+
+<p>Folks from Textile, NuCypher, and more will be presenting at <a href="https://hellodecentralization.com/">Hello Decentralization</a> next week!</p>
+
+<p>Discover <a href="https://coywolf.pro/webmaster/ipfs-distributed-web-cloudflare-host-site/">how to leverage Cloudflare and IPFS</a> distributed web to host a free high-availability site.</p>
+
+<p>Vault74 is going through a small rebrand, so allow us to introduce <a href="https://twitter.com/Satellite_im/status/1359410687009828866?s=20">Satellite</a>.</p>
+
+<p>Check out this <a href="https://www.reddit.com/r/ipfs/comments/lh1s9g/file_sharing_website_with_ipfs_support/">cool file sharing website</a> with IPFS support!</p>
+
+<h2 id="calling-all-ipfs-researchers-engineers-and-devs">Calling all IPFS researchers, engineers and devs!</h2>
+
+<p>Join the first forum for researchers and academics working in the IPFS space to present your work and exchange ideas during “Decentralising the Internet with IPFS and Filecoin” (DI2F). This workshop will be hosted at IFIP Networking 2021, a top academic conference in networking research, which will take place during 21-24 June.</p>
+
+<p><a href="https://research.protocol.ai/blog/2021/decentralising-the-internet-with-ipfs-and-filecoin-di2f-workshop-at-ifip-networking-2021-call-for-contributions/">CFPs due March 19</a></p>
+
+<h2 id="job-hunting-work-on-ipfs">Job hunting? Work on IPFS!</h2>
+
+<p><a href="https://textile.breezy.hr/p/cad4ea4bf0c9-senior-integrations-engineer">Senior Integration Engineer</a>: You will be responsible for providing technical leadership and guidance to our users while they are integrating with libp2p, IPFS, Filecoin, and Textile. Textile, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2507095">Technical Project Manager (Infura)</a>: Track active projects, remove roadblocks, and support the development team in identifying and keeping up-to-date all project requirements. Manage project, feature, technical debt, and bug backlogs working across teams in prioritizing work and planning out sprints. ConsenSys, Remote.</p>
+
+<p><a href="https://jobs.lever.co/3box/ec1093c5-ed31-483c-b1b3-49b07bd0bd2e">Ecosystem Developer</a>: We are looking for a technical community manager to help us create a world-class developer ecosystem and experience around our open source community. 3Box, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2426803">Sr. Backend Engineer</a>: Have built systems at scale in the past and can discuss the architectural tradeoffs that went into them. Experience with data lakes, data warehousing, and OLAP technologies. Self-directed. We want you to own the systems you build. ConsenSys, Remote.</p>
+
+<p><strong>Hey, libp2p deserves love too. ❤️</strong></p>
+
+<p>Get involved with IPFS by checking us out on <a href="https://github.com/ipfs">GitHub</a>, joining discussions on <a href="https://discuss.ipfs.io/">our community forum</a>, or hitting us up <a href="https://riot.im/app/#/room/#ipfs:matrix.org">in chat</a>. Have a suggestion? <a href="mailto:newsletter@ipfs.io">Email us</a>.</p>
+
+<p>Get the IPFS Weekly in your inbox, each Tuesday.
+<p><a href="https://ipfs.us4.list-manage.com/subscribe?u=25473244c7d18b897f5a1ff6b&amp;id=cad54b2230" class="button button-primary">Sign up now</a></p></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>libp2p comes to ProtoSchool</title>
+      <link>https://blog.ipfs.io/2021-02-17-libp2p-comes-to-protoschool/</link>
+      <pubDate>Wed, 17 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/2021-02-17-libp2p-comes-to-protoschool/</guid>
+      <description>The ProtoSchool team is pleased to announce the launch of a shiny new multiple-choice tutorial introducing libp2p, the modular peer-to-peer networking stack that spun out of IPFS into its own first-class project and a dependency of IPFS itself.</description>
+      <content:encoded><![CDATA[
+
+<p>The <a href="https://proto.school">ProtoSchool</a> team is pleased to announce the launch of a shiny new multiple-choice tutorial <a href="https://proto.school/introduction-to-libp2p">introducing libp2p</a>, the modular peer-to-peer networking stack that spun out of IPFS into its own first-class project and a dependency of IPFS itself. Today, IPFS focuses on <em>content addressing</em> (i.e., finding, fetching and authenticating any piece of content in the web) while libp2p focuses on <em>process addressing</em> (i.e., finding, connecting and authenticating any data transfer processes in the network).</p>
+
+<p><img style="width: 42rem" src="/124-libp2p-comes-to-protoschool/libp2p-ipfs-animation.gif" alt="libp2p animation representing libp2p being extracted out of ipfs" /></p>
+
+<p>Historically, companies that produced peer-to-peer applications like Skype or BitTorrent created their own protocols to support them. Those protocols made a lot of assumptions about the environments they’d run in and the needs they’d meet, making them incredibly hard to upgrade or adapt to new environments. libp2p, however, has been extracted from its original implementation as the networking stack of IPFS, and can now serve a broad variety of use cases. While everyone building on IPFS or Filecoin is using libp2p as a dependency, many folks are using libp2p independently or embedded in other projects such as Ethereum 2.0, Polkadot, and Status.im.</p>
+
+<p><img style="width: 50rem" src="/124-libp2p-comes-to-protoschool/libp2p-logo-animation.gif" alt="libp2p animation representing libp2p modularity. Each block of the libp2p logo represents a component of the libp2p network stack." /></p>
+
+<p>libp2p takes a modular approach to addressing the many components that can make up a network stack, from transports to multiplexing and beyond. A user can choose the specific pieces they need and compose their own configuration, tailored for their use cases. All of those pieces have very well defined interfaces that enable interoperability and easy upgrades, creating a future-proof networking stack. This ecosystem of interoperable modules is key to libp2p’s versatility across multiple environments.</p>
+
+<p>Learn more in our code-free <a href="https://proto.school/introduction-to-libp2p">Introduction to libp2p tutorial</a>, or view our full <a href="https://proto.school/course/ipfs">IPFS course on ProtoSchool</a> for intros to fundamental DWeb concepts, hands-on coding challenges with the js-ipfs APIs, and more.</p>
+
+<h2 id="more-on-libp2p">More on libp2p</h2>
+
+<p>We’re excited to bring more libp2p content to ProtoSchool in the near future! In the meantime, we highly recommend the <a href="https://docs.libp2p.io/">libp2p docs site</a> as a great source of conceptual explainers, as well as code examples featuring the Go Lang, JavaScript, and Rust implementations of the networking stack.</p>
+
+<h2 id="help-us-improve-protoschool">Help us improve ProtoSchool</h2>
+
+<p>ProtoSchool is a team effort, and we depend on folks in the IPFS and dweb community to outline new content, add new features, fix bugs, catch typos, and test-drive new tutorials like this one. There are many ways to <a href="https://proto.school/contribute">contribute to the project</a>, no matter your background, and our new multiple-choice format makes it super easy to <a href="https://proto.school/build">create new tutorials</a> without any coding experience. In fact, the awesome José Bateira, who created our latest tutorial, built it with the help of our user-friendly ProtoWizard CLI!</p>
+
+<p><img src="/115-protoschool-merkle-dags/protowizard.png" alt="Screenshot of ProtoWizard CLI"/></p>
+
+<p>One of the easiest ways to help is by sharing your feedback as you explore our tutorials. You’ll find a link at the bottom of every lesson to help you submit your suggestions.</p>
+
+<p>We can’t wait to hear what you think of the <a href="https://proto.school/introduction-to-libp2p">new libp2p tutorial</a>!</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Welcome to IPFS Weekly 122</title>
+      <link>https://blog.ipfs.io/weekly-122/</link>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/weekly-122/</guid>
+      <description>Here’s what’s happening in the InterPlanetary File System galaxy!
+Opera adds support for IPFS addressing to Opera Touch, their iOS browser Earlier this week, during a panel with Opera, Unstoppable Domains, and IPFS at ETHDenver 2021, Opera announced the addition of IPFS support in their mobile browser, Opera Touch.</description>
+      <content:encoded><![CDATA[
+
+<p>Here’s what’s happening in the <a href="https://ipfs.io/">InterPlanetary File System</a> galaxy!</p>
+
+<h2 id="opera-adds-support-for-ipfs-addressing-to-opera-touch-their-ios-browser">Opera adds support for IPFS addressing to Opera Touch, their iOS browser</h2>
+
+<p>Earlier this week, during a panel with Opera, Unstoppable Domains, and IPFS at ETHDenver 2021, Opera announced the addition of IPFS support in their mobile browser, Opera Touch. This release marks another important milestone in both the partnership with Opera and IPFS gaining recognition in mainstream browsers.</p>
+
+<p><a href="https://blog.ipfs.io/2021-02-08-opera-ios-and-ipfs/">Read more</a></p>
+
+<h2 id="hang-out-with-the-ipfs-community-in-2-weeks">Hang out with the IPFS community in 2 weeks</h2>
+
+<p>Our community meetups will now be every 4th Tuesday of the month, so this month join us for talks from Leon Do of IPFS FPS, Ilya Kreymer of ArchiveWeb.page, and Viktor Valastin of KodaDot. There’s always a chance of 🌩 lightning 🌩 talks, so be sure to get yours in now!</p>
+
+<p><a href="https://www.meetup.com/San-Francisco-IPFS/events/276018298/">Register now</a></p>
+
+<h2 id="relive-the-brave-x-ipfs-partnership-ama">Relive the Brave x IPFS partnership AMA</h2>
+
+<p>In case you missed it, we recently unveiled a very cool integration with Brave browser to fully support a native IPFS implementation. To discuss that partnership, Brave CTO and Co-founder Brian Bondi, and IPFS Ecosystem Lead Dietrich Ayala took questions from the Reddit community, so check it out.</p>
+
+<p><a href="https://brave.com/ama-with-brave-and-ipfs/">Read more</a></p>
+
+<h2 id="brand-new-on-ipfs">Brand new on IPFS</h2>
+
+<ul>
+<li><a href="https://blog.ceramic.network/3box-labs-a-future-on-ceramic-network/">3Box is now 3Box Labs</a>, reflecting their new focus on the development of the Ceramic Network ecosystem.</li>
+<li><a href="https://berty.tech/blog/hackernews-reddit-week/">Our friends at Berty</a> have had one heck of a week: from Hacker News to interview requests, check it out!</li>
+<li><a href="https://blog.textile.io/local-first-threaddb/">Textile</a> releases local-first ThreadDB for JavaScript just in time for ETHDenver 2021!</li>
+<li><a href="https://peergos.org/posts/calendar">Peergos</a> launches a shareable, fully end-to-end encrypted calendar in their latest update.</li>
+</ul>
+
+<h2 id="people-are-building-the-coolest-stuff-with-ipfs">People are building the coolest stuff with IPFS</h2>
+
+<p><a href="https://www.twitch.tv/ethereumdenver">ETHDenver 2021</a> is happening right now, so tune in to the livestream to see presentations, technical workshops, demos, panels and more!</p>
+
+<p>In the latest episode of the <a href="https://podcasts.apple.com/us/podcast/8-tracking-dapps-on-the-blockchain-with-robert-hoogendoorn/id1538672251?i=1000507723382">Unstoppable Podcast</a> they interview Robert Hoogendoorn, Head of Content at DappRadar, to talk about dapps.</p>
+
+<p>Exploring <a href="https://blog.fission.codes/headless-ghost-blog-fission/">“Headless” combinations</a> at Fission, beginning with the Ghost Content Management System (CMS).</p>
+
+<p><a href="https://www.forbes.com/sites/vipinbharathan/2021/02/09/edge--node-a-new-software-development-company-is-launched-by-the-graph-core-protocol-team/?sh=22ab630b4f8d">The Graph Core</a> has launched a new software development company: Edge &amp; Node</p>
+
+<p>Wondering what kinds of privacy apps can be <a href="https://medium.com/phala-network/what-kinds-of-privacy-applications-can-be-created-on-phala-e129d15b70d0">created on Phala</a>?</p>
+
+<h2 id="calling-all-ipfs-researchers-engineers-and-devs">Calling all IPFS researchers, engineers and devs!</h2>
+
+<p>Join the first forum for researchers and academics working in the IPFS space to present your work and exchange ideas during “Decentralising the Internet with IPFS and Filecoin” (DI2F). This workshop will be hosted at IFIP Networking 2021, a top academic conference in networking research, which will take place during 21-24 June.</p>
+
+<p><a href="https://research.protocol.ai/blog/2021/decentralising-the-internet-with-ipfs-and-filecoin-di2f-workshop-at-ifip-networking-2021-call-for-contributions/">CFPs due March 19</a></p>
+
+<h2 id="job-hunting-work-on-ipfs">Job hunting? Work on IPFS!</h2>
+
+<p><a href="https://textile.breezy.hr/p/cad4ea4bf0c9-senior-integrations-engineer">Senior Integration Engineer</a>: You will be responsible for providing technical leadership and guidance to our users while they are integrating with libp2p, IPFS, Filecoin, and Textile. Textile, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2507095">Technical Project Manager (Infura)</a>: Track active projects, remove roadblocks, and support the development team in identifying and keeping up-to-date all project requirements. Manage project, feature, technical debt, and bug backlogs working across teams in prioritizing work and planning out sprints. ConsenSys, Remote.</p>
+
+<p><a href="https://jobs.lever.co/3box/ec1093c5-ed31-483c-b1b3-49b07bd0bd2e">Ecosystem Developer</a>: We are looking for a technical community manager to help us create a world-class developer ecosystem and experience around our open source community. 3Box, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2426803">Sr. Backend Engineer</a>: Have built systems at scale in the past and can discuss the architectural tradeoffs that went into them. Experience with data lakes, data warehousing, and OLAP technologies. Self-directed. We want you to own the systems you build. ConsenSys, Remote.</p>
+
+<p><strong>No, IPFS does not have a blockchain. ❤️</strong></p>
+
+<p>Get involved with IPFS by checking us out on <a href="https://github.com/ipfs">GitHub</a>, joining discussions on <a href="https://discuss.ipfs.io/">our community forum</a>, or hitting us up <a href="https://riot.im/app/#/room/#ipfs:matrix.org">in chat</a>. Have a suggestion? <a href="mailto:newsletter@ipfs.io">Email us</a>.</p>
+
+<p>Get the IPFS Weekly in your inbox, each Tuesday.
+<p><a href="https://ipfs.us4.list-manage.com/subscribe?u=25473244c7d18b897f5a1ff6b&amp;id=cad54b2230" class="button button-primary">Sign up now</a></p></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>IPFS in Opera Touch on iOS!</title>
+      <link>https://blog.ipfs.io/2021-02-08-opera-ios-and-ipfs/</link>
+      <pubDate>Mon, 08 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/2021-02-08-opera-ios-and-ipfs/</guid>
+      <description>In 2020 we announced a big moment for IPFS: The first official support of IPFS protocol addressing in a major browser, when Opera released IPFS support in their Android browser.</description>
+      <content:encoded><![CDATA[
+
+<p style="text-align: center;">
+  <img src="/img/opera-ipfs-header.png" alt="IPFS in Opera Touch for iOS">
+</p>
+
+<p>In 2020 we announced a big moment for IPFS: The first official support of IPFS protocol addressing in a major browser, when <a href="https://blog.ipfs.io/2020-03-30-ipfs-in-opera-for-android/">Opera released IPFS support in their Android browser</a>. This was an important step in IPFS browser support generally, by building interest and momentum. We didn’t stop there, and we’ve got not just one… BUT TWO releases to share with you today!</p>
+
+<p>First, Opera has now added support for IPFS addressing to Opera Touch, their iOS browser.</p>
+
+<p style="text-align: center;">
+  <img src="/img/opera-ios-wikipedia-short.png" alt="A screenshot of Wikipedia on IPFS in Opera Touch">
+</p>
+
+<p>Second, support for IPFS addressing in Opera desktop browser for Windows, macOS, and Linux will be coming in their next release, currently planned for March 2021.</p>
+
+<p>As a special surprise for EthDenver, you can download a preview build of Opera for desktop which has IPFS addressing support! Give it a spin at <a href="https://ethdenver2021.opera.com">ethdenver2021.opera.com</a>.</p>
+
+<p>With these releases, Opera will now support <code>ipfs://</code> and <code>ipns://</code> addressing across their browser product line on all major operating systems: Windows, macOS, Linux, iOS, and Android.</p>
+
+<h2 id="how-do-i-use-it">How do I use it?</h2>
+
+<p>First, install Opera Touch on your iOS device. If you’re reading this on an iOS device, <a href="https://apps.apple.com/us/app/opera-touch-web-browser/id1411869974">click to install now</a>.</p>
+
+<p style="text-align: center;">
+  <img src="/img/opera-ios-app-store-short.png" alt="Opera Touch in the iOS app store">
+</p>
+
+<p>Then you can open content using IPFS protocol addresses, like the <a href="ipns://blog.ipfs.io">blog you’re reading now</a>, <a href="ipns://en.wikipedia-on-ipfs.org">Wikipedia</a>, or this <a href="ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf3efuylqabf3oclgtqy55fbzdi">Persian room guardian</a> by <a href="https://www.anyabozartist.com/the-persian-cat">Anya Boz</a>. You can easily upload files to IPFS using the <a href="https://docs.ipfs.io/install/ipfs-desktop/">IPFS desktop application</a> or <a href="https://share.ipfs.io">Share.ipfs.io</a>.</p>
+
+<h2 id="how-does-it-work">How does it work?</h2>
+
+<p>Opera Touch supports navigating to addresses for <code>ipfs://</code> and <code>ipns://</code> protocol schemes, which are handled by a remote HTTP gateway. By default the gateway used is <code>dweb.link</code>, which is operated by Protocol Labs. The ability to select a different gateway is coming in the next update of Opera Touch.</p>
+
+<p>Native representation of IPFS addresses in browsers is important, even when the content is loaded from an HTTP gateway as IPFS URIs are resolved out of the box, without the need for any additional extensions or opt-in settings, which familiarizes users and developers with decentralized concepts of content-addressing and creates a path to readiness for when native nodes are available.</p>
+
+<h2 id="what-s-next">What’s next?</h2>
+
+<p>Opera desktop browser support for IPFS addressing will ship soon, and we’re discussing what additional features to add next to build on top of this foundation of universal addressing support across the Opera browser line. Have ideas for what you’d like to see in Opera next? Let us know on the <a href="https://discuss.ipfs.io/">IPFS forums</a>, or tweet your ideas to <a href="https://twitter.com/opera">@Opera</a> and <a href="https://twitter.com/ipfs">@IPFS</a> on Twitter!</p>
+
+<p><a href="https://apps.apple.com/us/app/opera-touch-web-browser/id1411869974">Install Opera Touch on iOS now!</a></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Hey ETHDenver, hack on IPFS with these bounties!</title>
+      <link>https://blog.ipfs.io/2021-02-04-ethdenver-bounties/</link>
+      <pubDate>Thu, 04 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/2021-02-04-ethdenver-bounties/</guid>
+      <description>ETHDenver 2021 is in full swing, and as we mentioned in our last post the IPFS community is very stoked to get to be a part of this unique and awesome event!</description>
+      <content:encoded><![CDATA[
+
+<p><a href="https://www.ethdenver.com/">ETHDenver 2021</a> is in full swing, and as we mentioned in our <a href="https://blog.ipfs.io/2020-02-07-ethdenver-2020/">last post</a> the IPFS community is very stoked to get to be a part of this unique and awesome event! To encourage folks to try IPFS for the first time, or the second time, or the forty-second time, we’ve put together the following bounties to inspire your creativity and challenge your #BUILDathon skills.</p>
+
+<h2 id="ipfs-bounties-for-ethdenver-2021">IPFS Bounties for ETHDenver 2021</h2>
+
+<ul>
+<li>🦁 <strong>Get Brave with IPFS</strong>, $50: Using and demo’ing IPFS in your project with Brave desktop browser, Resources: <a href="https://brave.com/ipfs-support/">https://brave.com/ipfs-support/</a>.</li>
+<li>⭕️ <strong>Go browsing with Opera + IPFS</strong>, $50: Using and demo’ing IPFS in your project with Opera Android or Opera Touch on iOS, Resources: <a href="https://blog.ipfs.io/2020-03-30-ipfs-in-opera-for-android/">https://blog.ipfs.io/2020-03-30-ipfs-in-opera-for-android/</a></li>
+<li>📌 <strong>IPFS Pinning Services API</strong>, $500: Show us your best use of the new IPFS Pinning Services API, Resources: <a href="https://ipfs.github.io/pinning-services-api-spec/">https://ipfs.github.io/pinning-services-api-spec/</a></li>
+<li>👻 <strong>Hack Phantom Drift</strong>, $500: Build libp2p node visualizers on the DHT, Resources: <a href="https://github.com/libp2p/go-libp2p/issues/947">https://github.com/libp2p/go-libp2p/issues/947</a></li>
+</ul>
+
+<h3 id="best-use-of-ipfs-for-x-500-each-resources-here-https-docs-ipfs-io-concepts-usage-ideas-examples">Best use of IPFS for X, $500 each, <a href="https://docs.ipfs.io/concepts/usage-ideas-examples/">resources here</a></h3>
+
+<ul>
+<li>🤝 <strong>Collaboration</strong>: Let IPFS coordinate the flow of data between you and your colleagues, even when working offline or on a local network.</li>
+<li>📦 <strong>Asset storage</strong>: By storing small scripts or big databases of your project on IPFS, and depending on your architecture, you can yield several benefits.</li>
+<li>👾 <strong>Gaming</strong>: We want serverless online gaming, and we want it now!</li>
+<li>👷 <strong>IPFS as infrastructure</strong>: Using IPFS allows you to abstract away a lot of the complexity of coordination between machines. No matter your architecture IPFS handles load balancing, de-duplication, caching, and high availability out-of-the-box.</li>
+<li>🥷 <strong>Decentralized identity</strong>: Decentralized identity is a hot topic, and IPFS is one of the core technologies a lot of engineers build around.</li>
+<li>🙏 <strong>Decentralizing the Web itself</strong>: Some core pieces of the web are still centralized, making it more prone to break or being censored. IPFS can help and make the web more resilient.</li>
+</ul>
+
+<p>If you have questions, please reach out at the IPFS Help Desk, located in the Spork Shill Zone, right next to the Textile booth. Our community will be happy to help you!</p>
+
+<h2 id="need-a-break-from-hacking">Need a break from hacking?</h2>
+
+<p>Be sure to check out these IPFS presentations during your breather.</p>
+
+<h3 id="friday-february-5">Friday, February 5</h3>
+
+<p>1PM MST <a href="http://twitch.tv/ethereumdenver">Tune in on the Mainnet Livestream</a></p>
+
+<ul>
+<li><strong>IPFS: The Global CID</strong>, technical workshop</li>
+
+<li><p>Join Matt Ober,  Co-founder and CTO of <a href="https://pinata.cloud/">Pinata</a> for a technical glimpse into CIDs. Blockchain data is immutable and accessible in a decentralized way. Your off-chain data should be too. Learn how IPFS solves this and why the “Content Identifier” is crucial for projects storing data off-chain.</p>
+
+<h3 id="monday-february-8">Monday, February 8</h3>
+
+<p>10:15AM MST <a href="http://twitch.tv/ethereumdenver">Tune in on the Mainnet Livestream</a></p></li>
+
+<li><p><strong>Bridging Web2 &lt;&gt; Web3: IPFS x Opera integration</strong>, panel</p></li>
+
+<li><p>Join Dietrich Ayala, IPFS Ecosystem Lead, Igor Mandrigin Lead Crypto Researcher at Opera,  Bradley Kam, Co-Founder at Unstoppable Domains, and moderator Susie Batt, Head of Global Crypto Community at Opera, for an inside look at how browsers and decentralized technologies are teaming up to push Web3 forward.</p></li>
+</ul>
+
+<p>Stay tuned for talks from Textile, Ethereum Name Service, NEAR, Unstoppable Domains, Rarible, Ceramic, The Graph, 3Box Labs, AAVE, Polkadot, nuCypher, Cryptorado, Filecoin, Audius, Dappnode, Radicle, Chainlink, ConsenSys, and more!</p>
+
+<p>So join us for talks, fun times in the <a href="https://discord.gg/urUs9tqSXS">ETHDenver Discord</a> #ipfs channel, and—if you need it—come ask for help at the IPFS help desk! Happy BUIDLing, ETHDenver!</p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Welcome to IPFS Weekly 121</title>
+      <link>https://blog.ipfs.io/weekly-121/</link>
+      <pubDate>Wed, 03 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/weekly-121/</guid>
+      <description>Here’s what’s happening in the InterPlanetary File System galaxy!
+Does IPFS have a blockchain? One topic of discussion we see from time to time, that seems to be gaining popularity is the question of whether IPFS has a blockchain.</description>
+      <content:encoded><![CDATA[
+
+<p>Here’s what’s happening in the <a href="https://ipfs.io/">InterPlanetary File System</a> galaxy!</p>
+
+<h2 id="does-ipfs-have-a-blockchain">Does IPFS have a blockchain?</h2>
+
+<p>One topic of discussion we see from time to time, that seems to be gaining popularity is the question of whether IPFS has a blockchain. It’s been integrated with blockchains, and it deals with the complexities of storage. Luckily, this recent post highlights the various answers you can feel empowered to use when someone asks you this important question.</p>
+
+<p><a href="https://doesipfshaveablockchain.com/">Read more</a></p>
+
+<h2 id="a-letter-to-my-high-school-self-about-ipfs">A letter to my high school self about IPFS ❤️</h2>
+
+<p>Recently, to the benefit of our community, Henry Quinn discovered IPFS. But unlike some pieces of code one finds perusing the web, this experience reawakened a curiosity he remembered from a very specific time period. Recommended reading for all of the curious tinkerers.</p>
+
+<p><a href="https://henryneeds.coffee/posts/decentralized-01-week-with-ipfs/">Read more</a></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ad69PayYOlU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="catch-up-on-january-talks-from-peergos-and-more">Catch up on January talks from Peergos and more</h2>
+
+<p>If you missed our January virtual meetup, or want to revisit something you heard there, now all of the presentations are available for your viewing! Last month we had talks from the IPFS planning team, Peergos, Humanode, and Vault74, so be sure to check them all out.</p>
+
+<p><a href="https://www.youtube.com/playlist?list=PLuhRWgmPaHtToVYaDkd6ZTwB2Lo30s1vB">Watch now</a></p>
+
+<h2 id="brand-new-on-ipfs">Brand new on IPFS</h2>
+
+<ul>
+<li><a href="https://blog.ceramic.network/ceramic-network-clay-testnet/">Now you can build with Clay</a>, the official testnet for the Ceramic Network!</li>
+<li><a href="https://www.multiverse-vcs.com/">Discover the Multiverse</a>, a decentralized version control system for p2p development.</li>
+<li><a href="https://discuss.ipfs.io/t/first-humanode-tests-a-public-permissionless-network-of-biometrically-encrytped-human-nodes-running-merkle-crdt-cluster-on-ipfs/10004">Humanode</a>, a public permissionless network of biometrically encrytped human nodes built on IPFS.</li>
+<li><a href="https://discuss.ipfs.io/t/a-design-for-ipfs-version-rss/10059">This design combines RSS and IPFS</a>, titled IPIS, the InterPlanetary Information Syndication.</li>
+</ul>
+
+<h2 id="people-are-building-the-coolest-stuff-with-ipfs">People are building the coolest stuff with IPFS</h2>
+
+<p>Read the <a href="https://medium.com/the-ethereum-name-service/2020-retrospective-for-ens-7c5364142560">2020 Retrospective for ENS</a> by Brantly Millegan.</p>
+
+<p>Five of the most secure ways <a href="https://decrypt.co/55832/5-most-secure-ways-the-bitcoin-whitepaper-is-hosted-globally">the Bitcoin whitepaper</a> is hosted globally.</p>
+
+<p><a href="https://medium.com/phala-network/phala-transparent-and-private-global-computation-cloud-2d80c70ad1e9">Introducing Phala</a>: the transparent and private global computation cloud.</p>
+
+<p>Check out the <a href="https://discuss.ipfs.io/t/thor-browser-android-application/9910">Thor Android browser</a>, a web browser that supports Tor and IPFS, IPNS, and magnet urls.</p>
+
+<p>Read up on <a href="https://read.cash/@LeoBeltran/bitcoin-escala-como-almacenar-la-cadena-de-bloques-usando-ipfs-fee00410">Bitcoin scales</a>: how to store the blockchain using IPFS.</p>
+
+<h2 id="tell-us">Tell us!</h2>
+
+<p>What do you look forward to most from the IPFS Weekly? 🤔</p>
+
+<p><a href="https://forms.gle/zC5JqHxZqGMN1zQU9">My favorite part of the IPFS Weekly is&hellip;</a></p>
+
+<h2 id="job-hunting-work-on-ipfs">Job hunting? Work on IPFS!</h2>
+
+<p><a href="https://textile.breezy.hr/p/cad4ea4bf0c9-senior-integrations-engineer">Senior Integration Engineer</a>: You will be responsible for providing technical leadership and guidance to our users while they are integrating with libp2p, IPFS, Filecoin, and Textile. Textile, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2507095">Technical Project Manager (Infura)</a>: Track active projects, remove roadblocks, and support the development team in identifying and keeping up-to-date all project requirements. Manage project, feature, technical debt, and bug backlogs working across teams in prioritizing work and planning out sprints. ConsenSys, Remote.</p>
+
+<p><a href="https://jobs.lever.co/3box/ec1093c5-ed31-483c-b1b3-49b07bd0bd2e">Ecosystem Developer</a>: We are looking for a technical community manager to help us create a world-class developer ecosystem and experience around our open source community. 3Box, Remote.</p>
+
+<p><a href="https://boards.greenhouse.io/consensys/jobs/2426803">Sr. Backend Engineer</a>: Have built systems at scale in the past and can discuss the architectural tradeoffs that went into them. Experience with data lakes, data warehousing, and OLAP technologies. Self-directed. We want you to own the systems you build. ConsenSys, Remote.</p>
+
+<p><strong>More like InterPlanetary FUN System. ❤️</strong></p>
+
+<p>Get involved with IPFS by checking us out on <a href="https://github.com/ipfs">GitHub</a>, joining discussions on <a href="https://discuss.ipfs.io/">our community forum</a>, or hitting us up <a href="https://riot.im/app/#/room/#ipfs:matrix.org">in chat</a>. Have a suggestion? <a href="mailto:newsletter@ipfs.io">Email us</a>.</p>
+
+<p>Get the IPFS Weekly in your inbox, each Tuesday.
+<p><a href="https://ipfs.us4.list-manage.com/subscribe?u=25473244c7d18b897f5a1ff6b&amp;id=cad54b2230" class="button button-primary">Sign up now</a></p></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>js-IPFS 0.54.0 brings UPnP NAT Hole Punching to your js-IPFS node</title>
+      <link>https://blog.ipfs.io/2021-02-03-js-ipfs-0-54/</link>
+      <pubDate>Wed, 03 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.ipfs.io/2021-02-03-js-ipfs-0-54/</guid>
+      <description>🔦 Highlights  NAT UPnP Hole Punching
+ js-IPFS@0.54.0 enables NAT traversal with UPnP enabled routers for improved connectivity, but also requires a repo upgrade in the browser</description>
+      <content:encoded><![CDATA[
+
+<h1 id="highlights">🔦 Highlights</h1>
+
+<blockquote>
+<p>NAT UPnP Hole Punching</p>
+</blockquote>
+
+<p><code>js-IPFS@0.54.0</code> enables NAT traversal with UPnP enabled routers for improved connectivity, but also requires a repo upgrade in the browser</p>
+
+<h2 id="nat-upnp-hole-punching">↔️ NAT UPnP Hole Punching</h2>
+
+<p>When you run an IPFS node on your home network you are commonly behind a <a href="https://en.wikipedia.org/wiki/Network_address_translation">NAT</a> firewall. These types of firewalls are commonly used on home networks to work around the <a href="https://en.wikipedia.org/wiki/IPv4_address_exhaustion">shortage of IPv4 addresses</a> in the world.</p>
+
+<p>Normally, it’s not possible for computers external to your network to make connections to your node when this sort of infrastructure is between you and the remote computer. It’s essential for external computers to be able to connect to your computer when using IPFS, otherwise there is no way for remote nodes to fetch content stored on your node.</p>
+
+<p>This problem is not unique to IPFS, it also extends to any P2P network and a lot of online games. Thankfully there is a solution: if your router supported <a href="https://en.wikipedia.org/wiki/Universal_Plug_and_Play">UPnP</a> and you have it enabled, a process on your computer can communicate with the router and ask it to open an external port and forward all traffic sent to that port to your machine. Once the port has been opened, we are then free to inform our connected peers that they can open connections on this external port as and when required via the <a href="https://github.com/libp2p/specs/tree/master/identify">libp2p identify protocol</a>.</p>
+
+<p>js-IPFS@0.54.0 enables UPnP NAT hole punching by default, but it will only work if UPnP is enabled on your router; instructions for enabling this will vary by manufacturer so please see your router’s documentation for more information on how to enable.</p>
+
+<p>If everything works as expected, you should start to see externally addressable multiaddrs in the output of <code>jsipfs id</code> a short time after daemon startup without any extra configuration:</p>
+
+<pre><code class="language-console">$ jsipfs id
+{
+  &quot;id&quot;: &quot;QmT2aN...&quot;,
+  &quot;publicKey&quot;: &quot;CAASpgIwggEiMA0...&quot;,
+  &quot;addresses&quot;: [
+    &quot;/ip4/127.0.0.1/tcp/4002/p2p/QmT2aN...&quot;,
+    &quot;/ip4/127.0.0.1/tcp/4003/ws/p2p/QmT2aN...&quot;,
+    &quot;/ip4/192.168.2.50/tcp/4002/p2p/QmT2aN...&quot;,
+    &quot;/ip4/81.132.237.123/tcp/55170/p2p/QmT2aN...&quot;  // &lt;-- externally addressable!
+  ],
+  // ...other fields here
+}
+</code></pre>
+
+<p>If you do not wish to enable hole punching, you can set the <a href="https://github.com/ipfs/js-ipfs/blob/master/docs/CONFIG.md#disablenatportmap">Swarm.DisableNatPortMap</a> config key to <code>true</code>:</p>
+
+<pre><code class="language-console">$ jsipfs config --json Swarm.DisableNatPortMap true
+</code></pre>
+
+<h2 id="level-js-upgrade">level-js upgrade</h2>
+
+<p><code>js-IPFS@0.54.0</code> uses the latest version of level-js in the browser. <code>level-js@4.x.x</code> and below support storing keys as either <code>string</code>s or <code>Uint8Array</code>s, but <code>level-js@5.x.x</code> only supports Uint8Arrays in line with <code>leveldown</code> on Node.js.</p>
+
+<p>This means a database migration will be necessary for those running js-IPFS in the browser (Node.js is unaffected).</p>
+
+<p>This migration should take place automatically the first time you load <code>js-IPFS@0.54.0</code> on a web page that has previously used <code>js-IPFS@0.53.0</code> and below.</p>
+
+<p>You can disable this feature by passing <a href="https://github.com/ipfs/js-ipfs/blob/master/docs/MODULE.md#optionsrepoautomigrate"><code>repoAutoMigrate: false</code></a> to the IPFS constructor:</p>
+
+<pre><code class="language-js">const node = await IPFS.create({
+  repoAutoMigrate: false
+})
+</code></pre>
+
+<p>Though if you do this, you should give your users some way of upgrading because <code>level-js@5.x.x</code> cannot see any database keys that are not <code>Uint8Array</code>s.</p>
+
+<h1 id="new-features">✨New features</h1>
+
+<ul>
+<li>enable upnp nat hole punching (<a href="https://github.com/ipfs/js-ipfs/pull/3426">#3426</a>)</li>
+<li>support remote pinning services in ipfs-http-client (<a href="https://github.com/ipfs/js-ipfs/issues/3293">#3293</a>) (<a href="https://github.com/ipfs/js-ipfs/commit/ba240fdf93edc88028315483240d7822a7ca88ed">ba240fd</a>)</li>
+</ul>
+
+<h2 id="breaking-changes">🔨 Breaking changes</h2>
+
+<ul>
+<li>ipfs-repo upgrade requires repo migration to v10 in the browser</li>
+</ul>
+
+<h2 id="bug-fixes">🕷️ Bug fixes</h2>
+
+<ul>
+<li>updates webpack example to use v5 (<a href="https://github.com/ipfs/js-ipfs/issues/3512">#3512</a>) (<a href="https://github.com/ipfs/js-ipfs/commit/c7110db71b5c0f0f9f415f31f91b5b228341e13e">c7110db</a>), closes <a href="https://github.com/ipfs/js-ipfs/issues/3511">#3511</a></li>
+<li>issue with isolateModules flag (<a href="https://github.com/ipfs/js-ipfs/pull/3495">#3495</a>)</li>
+<li>use https agent for https requests (<a href="https://github.com/ipfs/js-ipfs/pull/3490">#3490</a>)</li>
+<li>update deps (<a href="https://github.com/ipfs/js-ipfs/issues/3514">#3514</a>) (<a href="https://github.com/ipfs/js-ipfs/commit/061d77cc03f40af5a3bc3590481e1e5836e7f0d8">061d77c</a>)</li>
+<li>document the ipfs http client constructor arguments (<a href="https://github.com/ipfs/js-ipfs/pull/3478">#3478</a>)</li>
+</ul>
+
+<h1 id="what-s-next">🗺️ What’s next?</h1>
+
+<p>Check out the js-IPFS <a href="https://github.com/orgs/ipfs/projects/6">Project Roadmap</a> which contains headline features organised in the order we hope them to land.</p>
+
+<p>Only large features are called out in the roadmap, expect lots of small bugfix releases between the roadmapped items!</p>
+
+<h1 id="huge-thank-you-to-everyone-that-made-this-release-possible">😍 Huge thank you to everyone that made this release possible</h1>
+
+<ul>
+<li><a href="https://github.com/achingbrain">@achingbrain</a> (60 commits, 24 PRs, 1 issue, 44 comments)</li>
+<li><a href="https://github.com/acolytec3">@acolytec3</a> (1 comment)</li>
+<li><a href="https://github.com/acostalima">@acostalima</a> (2 PRs, 5 comments)</li>
+<li><a href="https://github.com/andrew">@andrew</a> (1 PR)</li>
+<li><a href="https://github.com/aphelionz">@aphelionz</a> (1 comment)</li>
+<li><a href="https://github.com/cndolo">@cndolo</a> (1 comment)</li>
+<li><a href="https://github.com/codecov-io">@codecov-io</a> (1 comment)</li>
+<li><a href="https://github.com/CSDUMMI">@CSDUMMI</a> (1 issue)</li>
+<li><a href="https://github.com/david0178418">@david0178418</a> (1 comment)</li>
+<li><a href="https://github.com/ericspt">@ericspt</a> (1 issue)</li>
+<li><a href="https://github.com/FledgeXu">@FledgeXu</a> (1 issue)</li>
+<li><a href="https://github.com/geolffreym">@geolffreym</a> (1 issue, 1 comment)</li>
+<li><a href="https://github.com/Gozala">@Gozala</a> (2 commits, 1 PR, 1 issue, 9 comments)</li>
+<li><a href="https://github.com/HexaField">@HexaField</a> (1 comment)</li>
+<li><a href="https://github.com/hueimin426">@hueimin426</a> (1 comment)</li>
+<li><a href="https://github.com/hugomrdias">@hugomrdias</a> (11 commits, 5 PRs, 1 issue, 16 comments)</li>
+<li><a href="https://github.com/icidasset">@icidasset</a> (1 PR, 7 comments)</li>
+<li><a href="https://github.com/ikreymer">@ikreymer</a> (2 comments)</li>
+<li><a href="https://github.com/jacobheun">@jacobheun</a> (2 commits, 7 comments)</li>
+<li><a href="https://github.com/julien51">@julien51</a> (1 comment)</li>
+<li><a href="https://github.com/lacker">@lacker</a> (1 commit, 1 PR, 1 issue, 3 comments)</li>
+<li><a href="https://github.com/lidel">@lidel</a> (1 commit, 1 PR, 4 comments)</li>
+<li><a href="https://github.com/mburns">@mburns</a> (1 commit)</li>
+<li><a href="https://github.com/mtiger2k">@mtiger2k</a> (2 comments)</li>
+<li><a href="https://github.com/pestopancake">@pestopancake</a> (1 issue)</li>
+<li><a href="https://github.com/raphael10-collab">@raphael10-collab</a> (7 issues, 12 comments)</li>
+<li><a href="https://github.com/rob-deutsch">@rob-deutsch</a> (1 PR)</li>
+<li><a href="https://github.com/robertkiel">@robertkiel</a> (1 issue)</li>
+<li><a href="https://github.com/samlior">@samlior</a> (1 commit, 1 PR, 2 comments)</li>
+<li><a href="undefined">@stale</a> (2 comments)</li>
+<li><a href="https://github.com/tymmesyde">@tymmesyde</a> (1 PR, 2 issues)</li>
+<li><a href="https://github.com/valmack">@valmack</a> (1 issue, 2 comments)</li>
+<li><a href="https://github.com/vasco-santos">@vasco-santos</a> (50 commits, 13 PRs, 2 issues, 36 comments)</li>
+<li><a href="https://github.com/vmx">@vmx</a> (3 comments)</li>
+<li><a href="https://github.com/vogdb">@vogdb</a> (1 PR, 1 issue, 4 comments)</li>
+<li><a href="https://github.com/wemeetagain">@wemeetagain</a> (1 issue)</li>
+<li><a href="https://github.com/whydna">@whydna</a> (1 comment)</li>
+</ul>
+
+<h1 id="want-to-contribute">🙌🏽 Want to contribute?</h1>
+
+<p>Would you like to contribute to the IPFS project and don’t know how? Well, there are a few places you can get started:</p>
+
+<ul>
+<li>Check the issues with the <code>help wanted</code> label in the <a href="https://github.com/ipfs/js-ipfs/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22">js-IPFS repo</a></li>
+<li>Join the discussion at <a href="https://discuss.ipfs.io/">https://discuss.ipfs.io/</a> and help users find their answers.</li>
+<li>Join the <a href="https://github.com/ipfs/team-mgmt/issues/992">🚀 IPFS Core Implementations Weekly Sync 🛰</a> and be part of the action!</li>
+</ul>
+
+<h1 id="do-you-have-questions">⁉️ Do you have questions?</h1>
+
+<p>The best place to ask your questions about IPFS, how it works, and what you can do with it is at <a href="https://discuss.ipfs.io">discuss.ipfs.io</a>. We are also available at the <code>#ipfs</code> channel on Freenode.</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
