@@ -1,7 +1,7 @@
 package feeds
 
 import (
-	"encoding/json"
+	"net/http"
 
 	"github.com/ipfs/go-cid"
 	shell "github.com/ipfs/go-ipfs-api"
@@ -18,37 +18,45 @@ func GetFeedNode(feedCid string, s *shell.Shell) (*IPFeed, error) {
 	return answer, nil
 }
 
-func PutFeedNode(f *gofeed.Feed, items []*cid.Cid, s *shell.Shell) *cid.Cid {
-	ipf := IPFeed{
-		Title:           f.Title,
-		Description:     f.Description,
-		Link:            f.Link,
-		FeedLink:        f.FeedLink,
-		Updated:         f.Updated,
-		UpdatedParsed:   f.UpdatedParsed,
-		Published:       f.Published,
-		PublishedParsed: f.PublishedParsed,
-		Author:          (*Person)(f.Author),
-		Language:        f.Language,
-		Image:           (*Image)(f.Image),
-		Copyright:       f.Copyright,
-		Generator:       f.Generator,
-		Categories:      f.Categories,
-		DublinCoreExt:   f.DublinCoreExt,
-		ITunesExt:       f.ITunesExt,
-		Extensions:      f.Extensions,
-		Custom:          f.Custom,
-		FeedType:        f.FeedType,
-		FeedVersion:     f.FeedVersion,
+func GetIPFeed(f *gofeed.Feed, ipItems []*IPItem, s *shell.Shell) (*IPFeed, error) {
+	ipFeed := &IPFeed{
+		Title:       f.Title,
+		Description: f.Description,
+		Link:        f.Link,
+		Updated:     f.Updated,
 	}
-	for _, cid := range items {
-		ipf.Items = append(ipf.Items, *cid)
+	if f.Image != nil {
+		imageCID, err := storeFile(f.Image.URL, s)
+		if err != nil {
+			panic(err)
+		}
+		*ipFeed.Image = IPEnclosure{
+			URL:      f.Image.URL,
+			FileType: "image",
+			File:     *imageCID,
+		}
+
 	}
-	j, err := json.Marshal(ipf)
+	for _, ipItem := range ipItems {
+		ipFeed.IPItems = append(ipFeed.IPItems, ipItem)
+	}
+	return ipFeed, nil
+}
+
+func storeFile(URL string, s *shell.Shell) (*cid.Cid, error) {
+	resp, err := http.Get(URL)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	return DagPut(j, s)
+	hash, err := s.Add(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	answer, err := cid.Decode(hash)
+	if err != nil {
+		return nil, err
+	}
+	return &answer, nil
 }
 
 func DagPut(json []byte, s *shell.Shell) *cid.Cid {
@@ -68,18 +76,29 @@ func DagPut(json []byte, s *shell.Shell) *cid.Cid {
 	return &c
 }
 
-func GetItemNode(i *gofeed.Item, s *shell.Shell) *cid.Cid {
-	ij, err := getItemJSON(i)
-	if err != nil {
-		panic(err)
+func GetIPItem(i *gofeed.Item, s *shell.Shell) (*IPItem, error) {
+
+	ipItem := &IPItem{
+		Item: i,
 	}
-	return DagPut(ij, s)
+	for _, e := range i.Enclosures {
+		ipEnc, err := getHeavyEnclosure(e, s)
+		if err != nil {
+			return nil, err
+		}
+		ipItem.Enclosures = append(ipItem.Enclosures, ipEnc)
+	}
+	return ipItem, nil
 }
 
-func getItemJSON(i *gofeed.Item) ([]byte, error) {
-	answer, err := json.Marshal(i)
+func getHeavyEnclosure(e *gofeed.Enclosure, s *shell.Shell) (*IPEnclosure, error) {
+	cid, err := storeFile(e.URL, s)
 	if err != nil {
 		return nil, err
 	}
-	return answer, nil
+	return &IPEnclosure{
+		URL:      e.URL,
+		FileType: e.Type,
+		File:     *cid,
+	}, nil
 }

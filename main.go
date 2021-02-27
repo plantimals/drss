@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"net/url"
@@ -29,7 +30,7 @@ func parseFlags() *feeds.Config {
 
 func main() {
 	config := parseFlags()
-	cid := rssToISS(config)
+	cid := rssToDRSS(config)
 	json, err := cid.MarshalJSON()
 	if err != nil {
 		panic(err)
@@ -37,18 +38,31 @@ func main() {
 	fmt.Println(string(json))
 }
 
-func rssToISS(config *feeds.Config) *cid.Cid {
+func rssToDRSS(config *feeds.Config) *cid.Cid {
 	feed, err := getFeed(config.FeedURL)
 	if err != nil {
 		panic(err)
 	}
 	s := shell.NewShell("localhost:5001")
 
-	var itemNodes []*cid.Cid
+	var IPItems []*feeds.IPItem
 	for _, i := range feed.Items {
-		itemNodes = append(itemNodes, feeds.GetItemNode(i, s))
+		ipItem, err := feeds.GetIPItem(i, s)
+		if err != nil {
+			panic(err)
+		}
+		IPItems = append(IPItems, ipItem)
 	}
-	return feeds.PutFeedNode(feed, itemNodes, s)
+	ipFeed, err := feeds.GetIPFeed(feed, IPItems, s)
+	if err != nil {
+		panic(err)
+	}
+	ipFeedJSON, err := json.Marshal(ipFeed)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(ipFeedJSON))
+	return feeds.DagPut(ipFeedJSON, s)
 }
 
 func getFeed(url string) (*gofeed.Feed, error) {

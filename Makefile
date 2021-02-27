@@ -10,7 +10,7 @@ dependencies:
 	go mod download
 
 run:
-	./drss --storage `pwd`/feed
+	./drss --feedURL https://blog.golang.org/feed.atom
 
 clean:
 	rm drss; rm -rf feed
