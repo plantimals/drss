@@ -8,6 +8,7 @@ import (
 type Config struct {
 	StoragePath string
 	FeedURL     string
+	DumpSchema  bool
 }
 
 type IPItem struct {

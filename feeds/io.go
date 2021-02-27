@@ -3,6 +3,7 @@ package feeds
 import (
 	"net/http"
 
+	"github.com/alecthomas/jsonschema"
 	"github.com/ipfs/go-cid"
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/ipfs/go-ipfs-api/options"
@@ -101,4 +102,8 @@ func getHeavyEnclosure(e *gofeed.Enclosure, s *shell.Shell) (*IPEnclosure, error
 		FileType: e.Type,
 		File:     *cid,
 	}, nil
+}
+
+func GetJSONSchema() *jsonschema.Schema {
+	return jsonschema.Reflect(&IPFeed{})
 }
