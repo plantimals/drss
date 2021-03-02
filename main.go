@@ -11,10 +11,16 @@ import (
 	"github.com/ipfs/go-cid"
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/mmcdole/gofeed"
-	"github.com/plantimals/drss/feeds"
+	drss "github.com/plantimals/drss/feeds"
 )
 
-func parseFlags() *feeds.Config {
+type config struct {
+	StoragePath string
+	FeedURL     string
+	DumpSchema  bool
+}
+
+func parseFlags() *config {
 	var storagePath string
 	var feedURL string
 	var dumpSchema bool
@@ -27,7 +33,7 @@ func parseFlags() *feeds.Config {
 	if err != nil {
 		panic(err)
 	}
-	return &feeds.Config{
+	return &config{
 		StoragePath: storagePath,
 		FeedURL:     feedURL,
 		DumpSchema:  dumpSchema,
@@ -37,7 +43,7 @@ func parseFlags() *feeds.Config {
 func main() {
 	config := parseFlags()
 	if config.DumpSchema {
-		schema := feeds.GetJSONSchema()
+		schema := drss.GetJSONSchema()
 		json, err := schema.MarshalJSON()
 		if err != nil {
 			panic(err)
@@ -53,31 +59,31 @@ func main() {
 	}
 }
 
-func rssToDRSS(config *feeds.Config) *cid.Cid {
+func rssToDRSS(config *config) *cid.Cid {
 	feed, err := getFeed(config.FeedURL)
 	if err != nil {
 		panic(err)
 	}
 	s := shell.NewShell("localhost:5001")
 
-	var IPItems []*feeds.IPItem
+	var dItems []*drss.DItem
 	for _, i := range feed.Items {
-		ipItem, err := feeds.GetIPItem(i, s)
+		dItem, err := drss.CreateDItem(i, s)
 		if err != nil {
 			panic(err)
 		}
-		IPItems = append(IPItems, ipItem)
+		dItems = append(dItems, dItem)
 	}
-	ipFeed, err := feeds.GetIPFeed(feed, IPItems, s)
+	dFeed, err := drss.CreateDFeed(feed, dItems, s)
 	if err != nil {
 		panic(err)
 	}
-	ipFeedJSON, err := json.Marshal(ipFeed)
+	dFeedJSON, err := json.Marshal(dFeed)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(string(ipFeedJSON))
-	return feeds.DagPut(ipFeedJSON, s)
+	fmt.Println(string(dFeedJSON))
+	return drss.CreateDag(dFeedJSON, s)
 }
 
 func getFeed(url string) (*gofeed.Feed, error) {
