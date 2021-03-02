@@ -1,7 +1,9 @@
 package drss
 
 import (
+	"context"
 	"net/http"
+	"time"
 
 	"github.com/alecthomas/jsonschema"
 	"github.com/ipfs/go-cid"
@@ -44,28 +46,45 @@ func ReadDFeed(feedCid string, s *shell.Shell) (*DFeed, error) {
 	return answer, nil
 }
 
-//CreateDFeed TODO: does too much stuff, split this out
-func CreateDFeed(f *gofeed.Feed, dItems []*DItem, s *shell.Shell) (*DFeed, error) {
-	dFeed := &DFeed{
-		Title:       f.Title,
-		Description: f.Description,
-		Link:        f.Link,
-		Updated:     f.Updated,
-		Feed:        f,
+//CreateDFeedFromRSS takes an RSS/ATOM/JSON feed URL,
+//downloads the contents, converts it to a DFeed, then
+//pushes that feed into IPFS and returns a DFeed object
+func CreateDFeedFromRSS(RSSURL string, s *shell.Shell) (*DFeed, error) {
+	feed, err := GetRSSFeed(RSSURL)
+	if err != nil {
+		return nil, err
 	}
-	if f.Image != nil && f.Image.URL != "" {
-		imageCID, err := storeFile(f.Image.URL, s)
+	return CreateDFeed(feed, s)
+}
+
+//CreateDFeed takes a gofeed.Feed object, creates and
+//uploads a DFeed to IPFS, and returns a DFeed object
+func CreateDFeed(feed *gofeed.Feed, s *shell.Shell) (*DFeed, error) {
+
+	dFeed := &DFeed{
+		Title:       feed.Title,
+		Description: feed.Description,
+		Link:        feed.Link,
+		Updated:     feed.Updated,
+		Feed:        feed,
+	}
+	if feed.Image != nil && feed.Image.URL != "" {
+		imageCID, err := storeFile(feed.Image.URL, s)
 		if err != nil {
 			panic(err)
 		}
 		dFeed.Image = &DEnclosure{
-			URL:      f.Image.URL,
+			URL:      feed.Image.URL,
 			FileType: "image",
 			File:     imageCID,
 		}
 
 	}
-	for _, dItem := range dItems {
+	for _, i := range feed.Items {
+		dItem, err := CreateDItem(i, s)
+		if err != nil {
+			panic(err)
+		}
 		dFeed.DItems = append(dFeed.DItems, dItem)
 	}
 	return dFeed, nil
@@ -134,4 +153,15 @@ func getHeavyEnclosure(e *gofeed.Enclosure, s *shell.Shell) (*DEnclosure, error)
 
 func GetJSONSchema() *jsonschema.Schema {
 	return jsonschema.Reflect(&DFeed{})
+}
+
+func GetRSSFeed(url string) (*gofeed.Feed, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	fp := gofeed.NewParser()
+	feed, err := fp.ParseURLWithContext(url, ctx)
+	if err != nil {
+		return nil, err
+	}
+	return feed, nil
 }

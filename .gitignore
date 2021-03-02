@@ -1,6 +1,6 @@
 logo/
 .DS_Store
-drss
+drsstools
 feed/
 vcp-feed
 *.json
