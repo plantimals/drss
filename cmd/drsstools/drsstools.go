@@ -11,7 +11,7 @@ import (
 	"github.com/ipfs/go-cid"
 	shell "github.com/ipfs/go-ipfs-api"
 	"github.com/mmcdole/gofeed"
-	drss "github.com/plantimals/drss/feeds"
+	drss "github.com/plantimals/drss"
 )
 
 type config struct {

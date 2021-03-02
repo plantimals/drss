@@ -4,13 +4,13 @@ all: clean build run
 .PHONY: clean build
 
 build:
-	go build -o ./drss main.go
+	go build -o ./drsstools cmd/drsstools/drsstools.go
 
 dependencies:
 	go mod download
 
 run:
-	./drss --feedURL https://blog.golang.org/feed.atom
+	./drsstools --feedURL https://blog.golang.org/feed.atom
 
 clean:
-	rm drss; rm -rf feed
+	rm drsstools
