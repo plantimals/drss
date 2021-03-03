@@ -71,20 +71,10 @@ func main() {
 }
 
 func rssToDRSS(config *config) *cid.Cid {
-	feed, err := drss.GetRSSFeed(config.FeedURL)
-	if err != nil {
-		panic(err)
-	}
 	s := shell.NewShell("localhost:5001")
-
-	dFeed, err := drss.CreateDFeed(feed, s)
+	cid, err := drss.CreateDFeedFromRSS(config.FeedURL, s)
 	if err != nil {
 		panic(err)
 	}
-	dFeedJSON, err := json.Marshal(dFeed)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(string(dFeedJSON))
-	return drss.CreateDag(dFeedJSON, s)
+	return cid
 }

@@ -2,6 +2,7 @@ package drss
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 	"time"
 
@@ -22,7 +23,7 @@ type DItem struct {
 type DEnclosure struct {
 	URL      string   `json:"url,omitempty"`
 	FileType string   `json:"fileType"`
-	File     *cid.Cid `json:"file"`
+	File     *cid.Cid `json:"file,omitempty"`
 }
 
 //DFeed distributed feed
@@ -49,17 +50,61 @@ func ReadDFeed(feedCid string, s *shell.Shell) (*DFeed, error) {
 //CreateDFeedFromRSS takes an RSS/ATOM/JSON feed URL,
 //downloads the contents, converts it to a DFeed, then
 //pushes that feed into IPFS and returns a DFeed object
-func CreateDFeedFromRSS(RSSURL string, s *shell.Shell) (*DFeed, error) {
+func CreateDFeedFromRSS(RSSURL string, s *shell.Shell) (*cid.Cid, error) {
 	feed, err := GetRSSFeed(RSSURL)
 	if err != nil {
 		return nil, err
 	}
-	return CreateDFeed(feed, s)
+	dFeed, err := CreateDFeed(feed)
+	if err != nil {
+		return nil, err
+	}
+	return PushDFeedtoIPFS(dFeed, s)
+}
+
+func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
+	if dFeed.Feed.Image != nil && dFeed.Feed.Image.URL != "" {
+		imageCID, err := storeFile(dFeed.Feed.Image.URL, s)
+		if err != nil {
+			panic(err)
+		}
+		dFeed.Image = &DEnclosure{
+			URL:      dFeed.Feed.Image.URL,
+			FileType: "image",
+			File:     imageCID,
+		}
+	}
+	for _, dItem := range dFeed.DItems {
+		for _, dEnc := range dItem.Enclosures {
+			cid, err := storeFile(dEnc.URL, s)
+			if err != nil {
+				return nil, err
+			}
+			dEnc.File = cid
+		}
+		if dItem.Item.Image != nil && dItem.Item.Image.URL != "" {
+			imageCID, err := storeFile(dItem.Item.Image.URL, s)
+			if err != nil {
+				panic(err)
+			}
+			dFeed.Image = &DEnclosure{
+				URL:      dFeed.Feed.Image.URL,
+				FileType: "image",
+				File:     imageCID,
+			}
+		}
+	}
+
+	jf, err := json.Marshal(dFeed)
+	if err != nil {
+		return nil, err
+	}
+	return CreateDag(jf, s)
 }
 
 //CreateDFeed takes a gofeed.Feed object, creates and
 //uploads a DFeed to IPFS, and returns a DFeed object
-func CreateDFeed(feed *gofeed.Feed, s *shell.Shell) (*DFeed, error) {
+func CreateDFeed(feed *gofeed.Feed) (*DFeed, error) {
 
 	dFeed := &DFeed{
 		Title:       feed.Title,
@@ -68,20 +113,9 @@ func CreateDFeed(feed *gofeed.Feed, s *shell.Shell) (*DFeed, error) {
 		Updated:     feed.Updated,
 		Feed:        feed,
 	}
-	if feed.Image != nil && feed.Image.URL != "" {
-		imageCID, err := storeFile(feed.Image.URL, s)
-		if err != nil {
-			panic(err)
-		}
-		dFeed.Image = &DEnclosure{
-			URL:      feed.Image.URL,
-			FileType: "image",
-			File:     imageCID,
-		}
 
-	}
 	for _, i := range feed.Items {
-		dItem, err := CreateDItem(i, s)
+		dItem, err := CreateDItem(i)
 		if err != nil {
 			panic(err)
 		}
@@ -107,7 +141,7 @@ func storeFile(URL string, s *shell.Shell) (*cid.Cid, error) {
 }
 
 //CreateDag pushes a json object into IPFS, returning a cid address
-func CreateDag(json []byte, s *shell.Shell) *cid.Cid {
+func CreateDag(json []byte, s *shell.Shell) (*cid.Cid, error) {
 	ms, err := s.DagPutWithOpts(
 		json,
 		options.Dag.InputEnc("json"),
@@ -115,22 +149,22 @@ func CreateDag(json []byte, s *shell.Shell) *cid.Cid {
 		options.Dag.Hash("sha2-256"),
 	)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	c, err := cid.Decode(ms)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	return &c
+	return &c, nil
 }
 
 //CreateDItem accepts a gofeed.Item and turns it into a DItem
-func CreateDItem(i *gofeed.Item, s *shell.Shell) (*DItem, error) {
+func CreateDItem(i *gofeed.Item) (*DItem, error) {
 	dItem := &DItem{
 		Item: i,
 	}
 	for _, e := range i.Enclosures {
-		dEnc, err := getHeavyEnclosure(e, s)
+		dEnc, err := CreateLightEnclosure(e)
 		if err != nil {
 			return nil, err
 		}
@@ -139,7 +173,23 @@ func CreateDItem(i *gofeed.Item, s *shell.Shell) (*DItem, error) {
 	return dItem, nil
 }
 
-func getHeavyEnclosure(e *gofeed.Enclosure, s *shell.Shell) (*DEnclosure, error) {
+func CreateLightEnclosure(e *gofeed.Enclosure) (*DEnclosure, error) {
+	return &DEnclosure{
+		URL:      e.URL,
+		FileType: e.Type,
+	}, nil
+}
+
+func CreateHeavyFromLight(le *DEnclosure, s *shell.Shell) error {
+	cid, err := storeFile(le.URL, s)
+	if err != nil {
+		return err
+	}
+	le.File = cid
+	return nil
+}
+
+func CreateHeavyEnclosure(e *gofeed.Enclosure, s *shell.Shell) (*DEnclosure, error) {
 	cid, err := storeFile(e.URL, s)
 	if err != nil {
 		return nil, err
