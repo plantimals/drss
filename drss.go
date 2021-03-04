@@ -35,14 +35,15 @@ type DEnclosure struct {
 
 //DFeed distributed feed
 type DFeed struct {
-	DItems      []*DItem
-	Feed        *gofeed.Feed
-	Title       string      `json:"title"`
-	Description string      `json:"description,omitempty"`
-	Link        string      `json:"link,omitempty"`
-	Updated     string      `json:"updated,omitempty"`
-	Image       *DEnclosure `json:"image,omitempty"`
-	FeedID      DFeedID     `json:"dFeedID"`
+	DItems       []*DItem
+	Feed         *gofeed.Feed
+	Title        string        `json:"title"`
+	Description  string        `json:"description,omitempty"`
+	Link         string        `json:"link,omitempty"`
+	Updated      string        `json:"updated,omitempty"`
+	Image        *DEnclosure   `json:"image,omitempty"`
+	FeedID       DFeedID       `json:"dFeedID"`
+	OriginalFile []*DEnclosure `json:"enclosures"`
 }
 
 //GetHash converts a feed URL to a DFeedID
@@ -90,6 +91,13 @@ func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 			File:     imageCID,
 		}
 	}
+
+	originalFile, err := EncloseOriginalFile(dFeed, s)
+	if err != nil {
+		return nil, err
+	}
+	dFeed.OriginalFile = append(dFeed.OriginalFile, originalFile)
+
 	for _, dItem := range dFeed.DItems {
 		for _, dEnc := range dItem.Enclosures {
 			cid, err := storeFile(dEnc.URL, s)
@@ -116,6 +124,18 @@ func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 		return nil, err
 	}
 	return CreateDag(jf, s)
+}
+
+func EncloseOriginalFile(dFeed *DFeed, s *shell.Shell) (*DEnclosure, error) {
+	cid, err := storeFile(dFeed.Feed.FeedLink, s)
+	if err != nil {
+		return nil, err
+	}
+	return &DEnclosure{
+		File:     cid,
+		FileType: dFeed.Feed.FeedType,
+		URL:      dFeed.Feed.FeedLink,
+	}, nil
 }
 
 //CreateDFeed takes a gofeed.Feed object, creates and
