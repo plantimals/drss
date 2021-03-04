@@ -2,9 +2,13 @@ package drss
 
 import (
 	"context"
+	"crypto/sha256"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
+
+	b64 "encoding/base64"
 
 	"github.com/alecthomas/jsonschema"
 	"github.com/ipfs/go-cid"
@@ -12,6 +16,9 @@ import (
 	"github.com/ipfs/go-ipfs-api/options"
 	"github.com/mmcdole/gofeed"
 )
+
+//DFeedID is the sha2 256 hash of feed url, used to identify a feed
+type DFeedID string
 
 //DItem distributed item
 type DItem struct {
@@ -35,6 +42,15 @@ type DFeed struct {
 	Link        string      `json:"link,omitempty"`
 	Updated     string      `json:"updated,omitempty"`
 	Image       *DEnclosure `json:"image,omitempty"`
+	FeedID      DFeedID     `json:"dFeedID"`
+}
+
+//GetHash converts a feed URL to a DFeedID
+func GetHash(URL string) DFeedID {
+	hash := sha256.Sum256([]byte(URL))
+	base := b64.RawURLEncoding.EncodeToString(hash[:])
+	fmt.Printf("encoded URL: %s\n", base)
+	return DFeedID(base)
 }
 
 //ReadDFeed fetches and unmarshals a DFeed from a CID address
@@ -105,8 +121,8 @@ func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 //CreateDFeed takes a gofeed.Feed object, creates and
 //uploads a DFeed to IPFS, and returns a DFeed object
 func CreateDFeed(feed *gofeed.Feed) (*DFeed, error) {
-
 	dFeed := &DFeed{
+		FeedID:      GetHash(feed.FeedLink),
 		Title:       feed.Title,
 		Description: feed.Description,
 		Link:        feed.Link,
