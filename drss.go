@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"time"
 
@@ -24,6 +23,7 @@ type DFeedID string
 type DItem struct {
 	Item       *gofeed.Item  `json:"item,omitempty"`
 	Enclosures []*DEnclosure `json:"enclosures,omitempty"`
+	Image      *DEnclosure   `json:"image"`
 }
 
 //DEnclosure distributed enclosure
@@ -31,26 +31,26 @@ type DEnclosure struct {
 	URL      string   `json:"url,omitempty"`
 	FileType string   `json:"fileType"`
 	File     *cid.Cid `json:"file,omitempty"`
+	Title    string   `json:"title,omitempty"`
 }
 
 //DFeed distributed feed
 type DFeed struct {
 	DItems       []*DItem
 	Feed         *gofeed.Feed
-	Title        string        `json:"title"`
-	Description  string        `json:"description,omitempty"`
-	Link         string        `json:"link,omitempty"`
-	Updated      string        `json:"updated,omitempty"`
-	Image        *DEnclosure   `json:"image,omitempty"`
-	FeedID       DFeedID       `json:"dFeedID"`
-	OriginalFile []*DEnclosure `json:"enclosures"`
+	Title        string      `json:"title"`
+	Description  string      `json:"description,omitempty"`
+	Link         string      `json:"link,omitempty"`
+	Updated      string      `json:"updated,omitempty"`
+	Image        *DEnclosure `json:"image,omitempty"`
+	FeedID       DFeedID     `json:"dFeedID"`
+	OriginalFile *DEnclosure `json:"enclosures"`
 }
 
 //GetHash converts a feed URL to a DFeedID
 func GetHash(URL string) DFeedID {
 	hash := sha256.Sum256([]byte(URL))
 	base := b64.RawURLEncoding.EncodeToString(hash[:])
-	fmt.Printf("encoded URL: %s\n", base)
 	return DFeedID(base)
 }
 
@@ -76,10 +76,11 @@ func CreateDFeedFromRSS(RSSURL string, s *shell.Shell) (*cid.Cid, error) {
 	if err != nil {
 		return nil, err
 	}
-	return PushDFeedtoIPFS(dFeed, s)
+	return PushDFeedToIPFS(dFeed, s)
 }
 
-func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
+//PushDFeedToIPFS heavy loads a dFeed into IPFS returning its CID
+func PushDFeedToIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 	if dFeed.Feed.Image != nil && dFeed.Feed.Image.URL != "" {
 		imageCID, err := storeFile(dFeed.Feed.Image.URL, s)
 		if err != nil {
@@ -89,6 +90,7 @@ func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 			URL:      dFeed.Feed.Image.URL,
 			FileType: "image",
 			File:     imageCID,
+			Title:    dFeed.Feed.Image.Title,
 		}
 	}
 
@@ -96,7 +98,7 @@ func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 	if err != nil {
 		return nil, err
 	}
-	dFeed.OriginalFile = append(dFeed.OriginalFile, originalFile)
+	dFeed.OriginalFile = originalFile
 
 	for _, dItem := range dFeed.DItems {
 		for _, dEnc := range dItem.Enclosures {
@@ -111,10 +113,11 @@ func PushDFeedtoIPFS(dFeed *DFeed, s *shell.Shell) (*cid.Cid, error) {
 			if err != nil {
 				panic(err)
 			}
-			dFeed.Image = &DEnclosure{
-				URL:      dFeed.Feed.Image.URL,
+			dItem.Image = &DEnclosure{
+				URL:      dItem.Item.Image.URL,
 				FileType: "image",
 				File:     imageCID,
+				Title:    dItem.Item.Image.Title,
 			}
 		}
 	}
@@ -199,42 +202,20 @@ func CreateDItem(i *gofeed.Item) (*DItem, error) {
 	dItem := &DItem{
 		Item: i,
 	}
-	for _, e := range i.Enclosures {
-		dEnc, err := CreateLightEnclosure(e)
-		if err != nil {
-			return nil, err
+	if i.Image != nil && i.Image.URL != "" {
+		dItem.Image = &DEnclosure{
+			URL:      i.Image.URL,
+			FileType: "image",
+			Title:    i.Image.Title,
 		}
-		dItem.Enclosures = append(dItem.Enclosures, dEnc)
+	}
+	for _, e := range i.Enclosures {
+		dItem.Enclosures = append(dItem.Enclosures, &DEnclosure{
+			URL:      e.URL,
+			FileType: e.Type,
+		})
 	}
 	return dItem, nil
-}
-
-func CreateLightEnclosure(e *gofeed.Enclosure) (*DEnclosure, error) {
-	return &DEnclosure{
-		URL:      e.URL,
-		FileType: e.Type,
-	}, nil
-}
-
-func CreateHeavyFromLight(le *DEnclosure, s *shell.Shell) error {
-	cid, err := storeFile(le.URL, s)
-	if err != nil {
-		return err
-	}
-	le.File = cid
-	return nil
-}
-
-func CreateHeavyEnclosure(e *gofeed.Enclosure, s *shell.Shell) (*DEnclosure, error) {
-	cid, err := storeFile(e.URL, s)
-	if err != nil {
-		return nil, err
-	}
-	return &DEnclosure{
-		URL:      e.URL,
-		FileType: e.Type,
-		File:     cid,
-	}, nil
 }
 
 func GetJSONSchema() *jsonschema.Schema {
